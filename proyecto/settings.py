@@ -81,13 +81,13 @@ WSGI_APPLICATION = 'proyecto.wsgi.application'
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'usadasbello',
-        'USER': 'root',
-        'PASSWORD': 'sena',
-        'HOST': 'localhost',
-        'PORT': '3306',
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": os.getenv("MYSQLDATABASE"),
+        "USER": os.getenv("MYSQLUSER"),
+        "PASSWORD": os.getenv("MYSQLPASSWORD"),
+        "HOST": os.getenv("MYSQLHOST"),
+        "PORT": os.getenv("MYSQLPORT"),
     }
 }
 
