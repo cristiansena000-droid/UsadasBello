@@ -6,7 +6,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from django.views.generic import RedirectView
-
+from django.shortcuts import redirect
 urlpatterns = [
     path('index/', views.index),
     path('comprar/', views.comprar),
