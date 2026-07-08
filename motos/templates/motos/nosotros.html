@@ -1,0 +1,105 @@
+{% extends 'motos/base.html' %}
+{% load static %}
+
+{% block title %}
+Nosotros
+{% endblock %}
+
+{% block content %}
+
+<!-- CONTENIDO NOSOTROS -->
+<section class="nosotros">
+
+    <div class="contenedor-nosotros">
+
+        <!-- TEXTO -->
+        <div class="texto-nosotros">
+            <h1>SOBRE <span>NOSOTROS</span></h1>
+            <p>
+                En Compra y Venta nos dedicamos a la compraventa de motos usadas de forma rápida,
+                segura y sin complicaciones. Sabemos que comprar o vender una moto puede ser confuso,
+                por eso nuestro objetivo es hacer todo el proceso claro, confiable y directo,
+                acompañándote en cada paso.
+            </p>
+        </div>
+
+        <!-- IMAGEN -->
+        <div class="imagen-nosotros">
+            <img src="{% static 'motos/img/nosotros.png' %}">
+        </div>
+
+    </div>
+
+    <!-- PARTE DE ABAJO -->
+    <div class="info-nosotros">
+
+        <!-- MAPA -->
+        <div class="ubicacion">
+            <h3>Estamos ubicados en <span>Bello, Antioquia</span></h3>
+            <br>
+
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.4587186307476!2d-75.55525109999999!3d6.334573400000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e442f00811421c9%3A0xbcb04ada3bc6993c!2sCompraventa%20usadas%20bello!5e0!3m2!1ses-419!2sco!4v1777130817326!5m2!1ses-419!2sco" 
+                width="600" 
+                height="450" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>
+
+        </div>
+
+        <!-- HORARIOS -->
+        <div class="horarios">
+            <h3>Horarios de atención</h3>
+            <br>
+
+            <p>
+                Lunes: 8:00 a.m. - 7:00 p.m.<br>
+                Martes: 8:00 a.m. - 7:00 p.m.<br>
+                Miércoles: 8:00 a.m. - 7:00 p.m.<br>
+                Jueves: 8:00 a.m. - 7:00 p.m.<br>
+                Viernes: 8:00 a.m. - 7:00 p.m.<br>
+                Sábado: 8:00 a.m. - 7:00 p.m.<br>
+                Domingo: Cerrado
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <div class="footer-col">
+            <h3>Compra venta usadas Bello</h3>
+            <p>📍 Cl. 49 #46-32, Prado,<br>Bello, Antioquia</p>
+            <p>✉️ usadasbello@gmail.com</p>
+            <p>📞 +57 312 298 1888</p>
+        </div>
+
+        <div class="footer-col">
+            <h3>Enlaces rápidos</h3>
+            <a href="#">Inicio</a>
+            <a href="#">Comprar moto</a>
+            <a href="#">Vender mi moto</a>
+            <a href="#">Servicios</a>
+            <a href="#">Nosotros</a>
+        </div>
+
+        <div class="footer-col">
+            <h3>Redes</h3>
+            <a href="#">Instagram</a>
+            <a href="#">Facebook</a>
+            <a href="#">WhatsApp</a>
+        </div>
+
+    </div>
+
+</footer>
+
+{% endblock %}

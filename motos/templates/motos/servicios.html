@@ -1,0 +1,188 @@
+{% extends 'motos/base.html' %}
+{% load static %}
+
+{% block title %}
+Servicios - Motos Bello
+{% endblock %}
+
+{% block css %}
+<style>
+
+/* HERO SERVICIOS */
+.servicios-hero {
+
+    background:
+    linear-gradient(
+        180deg,
+        #ffffff,
+        #f4f6f8
+    );
+
+    padding: 120px 20px 80px;
+
+    text-align: center;
+
+    color: #222;
+
+    position: relative;
+
+}
+
+
+.servicios-hero h1 {
+    position: relative;
+    font-size: 42px;
+}
+
+.servicios-hero span {
+    color: #ffd000;
+}
+
+/* CARDS */
+.cards-servicios {
+    position: relative;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: rgba(255,255,255,0.95);
+    padding: 25px 20px;
+    width: 220px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+}
+
+.card img {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.card h3 {
+    margin: 10px 0;
+}
+
+.card p {
+    font-size: 14px;
+    color: #555;
+}
+
+/* BOTON */
+.btn-contacto {
+    display: inline-block;
+    margin-top: 50px;
+    background: #ffd000;
+    padding: 15px 35px;
+    border-radius: 12px;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+    position: relative;
+    font-size: 18px;
+}
+.card img {
+    width: 55px;
+    height: 55px;
+
+    object-fit: contain;
+
+    display: block;
+
+    margin: 0 auto 15px auto;
+}
+
+</style>
+{% endblock %}
+
+{% block content %}
+
+<section class="servicios-hero">
+
+    <h1>Nuestros <span>Servicios</span></h1>
+
+    <div class="cards-servicios">
+
+        <a href="{% url 'traspasos' %}" class="card-link">
+            <div class="card">
+                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135706.png">
+                <h3>Traspasos</h3>
+                <p>Realizamos el cambio de propietario de tu moto de forma rápida y segura.</p>
+            </div>
+        </a>
+
+        <div class="card">
+            <a href="{% url 'gps' %}">
+                <img src="https://cdn-icons-png.flaticon.com/512/854/854878.png">
+                <h3>Instalación de GPS</h3>
+                <p>Instalamos sistemas GPS para mayor seguridad.</p>
+            </a>
+        </div>
+
+        <div class="card">
+            <a href="{% url 'recibimos' %}">
+                <img src="https://cdn-icons-png.flaticon.com/512/743/743131.png">
+                <h3>Recibimos tu moto</h3>
+                <p>Recibimos tu moto como parte de pago de forma rápida y sencilla.</p>
+            </a>
+        </div>
+
+        <div class="card">
+            <a href="{% url 'soat' %}">
+                <img src="https://cdn-icons-png.flaticon.com/512/2920/2920277.png">
+                <h3>SOAT y tecno-mecánica</h3>
+                <p>Gestionamos SOAT y revisión técnico-mecánica para tu moto.</p>
+            </a>
+        </div>
+
+    </div>
+
+    <a href="https://wa.me/573001234567" target="_blank" class="btn-contacto">
+        Contáctanos
+    </a>    
+
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <div class="footer-col">
+            <h3>Compra venta usadas Bello</h3>
+            <p>📍 Cl. 49 #46-32, Prado,<br>Bello, Antioquia</p>
+            <p>✉️ usadasbello@gmail.com</p>
+            <p>📞 +57 312 298 1888</p>
+        </div>
+
+        <div class="footer-col">
+            <h3>Enlaces rápidos</h3>
+            <a href="#">Inicio</a>
+            <a href="#">Comprar moto</a>
+            <a href="#">Vender mi moto</a>
+            <a href="#">Servicios</a>
+            <a href="#">Nosotros</a>
+        </div>
+
+        <div class="footer-col">
+            <h3>Redes</h3>
+            <a href="#">Instagram</a>
+            <a href="#">Facebook</a>
+            <a href="#">WhatsApp</a>
+        </div>
+
+    </div>
+
+</footer>
+
+{% endblock %}

@@ -1,0 +1,234 @@
+{% extends 'motos/base.html' %}
+{% load static %}
+
+{% block title %}
+Vender Moto
+{% endblock %}
+
+{% block css %}
+<style>
+
+/* RESET SUAVE */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', sans-serif;
+}
+
+/* SECCIÓN VENDER */
+.vender{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:
+    linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)),
+    url("{% static 'motos/img/modelo-casco.jpg' %}") center/cover no-repeat;
+    padding:40px 20px;
+}
+
+/* CONTENIDO */
+.vender-contenido{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    max-width:1100px;
+    width:100%;
+    gap:60px;
+}
+
+/* TEXTO */
+.vender-texto{
+    flex:1;
+    color:white;
+}
+
+.vender-texto h1{
+    font-size:46px;
+    margin-bottom:25px;
+    line-height:1.2;
+}
+
+.vender-texto p{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:12px;
+    font-size:16px;
+    opacity:0.9;
+}
+
+/* NUMEROS */
+.vender-texto span{
+    width:28px;
+    height:28px;
+    background:#ff2b2b;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:50%;
+    font-size:14px;
+    font-weight:bold;
+}
+
+/* FORMULARIO */
+.vender-form{
+    flex:1;
+    background:rgba(255,255,255,0.08);
+    padding:30px;
+    border-radius:12px;
+    backdrop-filter:blur(10px);
+    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+}
+
+.vender-form form{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.fila{
+    display:flex;
+    gap:12px;
+}
+
+.fila input{
+    flex:1;
+    padding:12px 14px;
+    border-radius:6px;
+    border:none;
+    outline:none;
+    font-size:14px;
+    background:rgba(255,255,255,0.9);
+    transition:0.3s ease;
+}
+
+.fila input:focus{
+    background:white;
+    box-shadow:0 0 0 2px #ff2b2b;
+}
+
+.btn{
+    padding:14px;
+    border:none;
+    cursor:pointer;
+    font-weight:bold;
+    color:white;
+    border-radius:6px;
+    transition:0.3s ease;
+}
+
+.rojo{
+    background:#ff2b2b;
+}
+
+.rojo:hover{
+    background:#cc0000;
+    transform:translateY(-2px);
+    box-shadow:0 8px 20px rgba(255,0,0,0.4);
+}
+
+@media (max-width:900px){
+    .vender-contenido{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .fila{
+        flex-direction:column;
+    }
+}
+
+</style>
+{% endblock %}
+
+{% block content %}
+
+<section class="vender">
+
+    <div class="vender-contenido">
+
+        <div class="vender-texto">
+
+            <h1>VENDE TU MOTO<br>FÁCIL Y RÁPIDO</h1>
+
+            <p><span>1</span>Envía los datos de tu moto</p>
+            <p><span>2</span>Te contactamos rápido</p>
+            <p><span>3</span>Negociamos el mejor precio</p>
+
+        </div>
+
+        <div class="vender-form">
+
+            <form method="POST" enctype="multipart/form-data">
+
+                {% csrf_token %}
+
+                <div class="fila">
+                    <input type="text" name="marca" placeholder="Marca" required>
+                    <input type="text" name="modelo" placeholder="Linea" required>
+                </div>
+
+                <div class="fila">
+    <input type="number" name="año" placeholder="Año" required>
+    <input type="text" name="nombre" placeholder="Nombre" required>
+</div>
+
+<div class="fila">
+    <input type="text" name="whatsapp" placeholder="WhatsApp" required>
+</div>
+
+                <div class="fila">
+                    <input type="number" name="kilometraje" placeholder="Kilometraje" required>
+                    <input type="file" name="imagen" required>
+                </div>
+
+                <button class="btn rojo" type="submit">
+                    Vender mi moto
+                </button>
+
+                {% if mensaje %}
+                    <p class="mensaje-exito">{{ mensaje }}</p>
+                {% endif %}
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-container">
+
+        <div class="footer-col">
+            <h3>Compra venta usadas Bello</h3>
+            <p>📍 Cl. 49 #46-32, Prado,<br>Bello, Antioquia</p>
+            <p>✉️ usadasbello@gmail.com</p>
+            <p>📞 +57 312 298 1888</p>
+        </div>
+
+        <div class="footer-col">
+            <h3>Enlaces rápidos</h3>
+            <a href="#">Inicio</a>
+            <a href="#">Comprar moto</a>
+            <a href="#">Vender mi moto</a>
+            <a href="#">Servicios</a>
+            <a href="#">Nosotros</a>
+        </div>
+
+        <div class="footer-col">
+            <h3>Redes</h3>
+            <a href="#">Instagram</a>
+            <a href="#">Facebook</a>
+            <a href="#">WhatsApp</a>
+        </div>
+
+    </div>
+</footer>
+
+{% endblock %}

@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>
+        {% block title %}Motos{% endblock %}
+    </title>
+
+    {% load static %}
+
+    <link rel="stylesheet"
+    href="{% static 'motos/style.css' %}">
+
+    <link rel="stylesheet"
+    href="{% static 'motos/panel_2.css' %}">
+
+    {% block css %}
+    {% endblock %}
+
+</head>
+
+<body>
+
+<header>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            UsadasBello
+        </div>
+        
+
+        <div class="menu-escritorio">
+
+    <ul class="menu">
+
+        <li><a href="/index/">Inicio</a></li>
+
+        <li><a href="/comprar/">Comprar moto</a></li>
+
+        <li><a href="/vender/">Vender mi moto</a></li>
+
+        <li><a href="/servicios/">Servicios</a></li>
+
+        <li><a href="/nosotros/">Nosotros</a></li>
+
+    </ul>
+
+</div>
+
+        <div class="menu-admin">
+
+            <button class="btn-menu">
+                ☰
+            </button>
+
+            <div class="panel-admin">
+
+                <button class="cerrar-panel">
+                    ×
+                </button>
+
+                {% if user.is_authenticated %}
+
+                <div class="usuario-top">
+
+                    {% if user.perfilusuario.foto and user.perfilusuario.foto.name != 'perfiles/default.png' %}
+
+<img
+    src="{{ user.perfilusuario.foto.url }}"
+    class="foto-perfil"
+>
+
+{% else %}
+
+<div class="foto-perfil-default">
+
+    {{ user.username|first|upper }}
+
+</div>
+
+{% endif %}
+
+                    <div class="usuario-info">
+
+                        <h3>
+                            Hola {{ user.username }}
+                        </h3>
+
+                        <p>
+                            {{ user.perfilusuario.telefono }}
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="menu-links">
+
+
+                    <a href="/favoritos/" class="item-menu">
+                        Favoritos
+                    </a>
+
+                    <a href="/mis_solicitudes/" class="item-menu">
+                        Solicitudes
+                    </a>
+
+                    <a href="/notificaciones/" class="item-menu">
+                        Notificaciones
+                    </a>
+
+                    <a
+    href="#"
+    class="item-menu"
+    onclick="abrirConsulta()"
+>
+    Consultar placa
+</a>
+
+                    <a href="/perfil/" class="item-menu">
+                        Mi perfil
+                    </a>
+
+                    <a href="{% url 'manual' %}"
+                        target="_blank"
+                            class="item-menu">
+
+                                Manual de usuario
+
+                            </a>
+
+                    <a href="/logout/" class="item-menu salir">
+                        Cerrar sesión
+                    </a>
+
+                </div>
+
+                {% else %}
+
+                <div class="auth-box">
+
+                    <!-- LOGIN -->
+
+                    <div class="auth-section" id="login-box">
+
+                        <h3>
+                            Login
+                        </h3>
+
+                        <form method="POST">
+
+                            {% csrf_token %}
+
+                            <input
+                                class="input-auth"
+                                type="text"
+                                name="username"
+                                placeholder="Usuario"
+                            >
+
+                            <input
+                                class="input-auth"
+                                type="password"
+                                name="password"
+                                placeholder="Contraseña"
+                            >
+
+                            <button class="btn-login">
+                                Login
+                            </button>
+
+                        </form>
+
+                        <span
+                            onclick="mostrarRegistro()"
+                            class="switch-link">
+
+                            Crear cuenta
+
+                        </span>
+
+                        <br>
+
+                        <span
+                            onclick="mostrarReset()"
+                            class="switch-link">
+
+                            Olvidé contraseña
+
+                        </span>
+
+                    </div>
+
+                    <!-- REGISTRO -->
+
+                    <div
+                        class="auth-section"
+                        id="registro-box"
+                        style="display:none;"
+                    >
+
+                        <h3>
+                            Registro
+                        </h3>
+
+                        <form method="POST">
+
+                            {% csrf_token %}
+
+                            <input
+    class="input-auth"
+    type="text"
+    name="username"
+    placeholder="Usuario"
+    value="{{ datos_registro.username|default:'' }}"
+>
+
+                  <input
+    class="input-auth"
+    type="email"
+    name="email"
+    placeholder="Correo"
+    value="{{ datos_registro.email|default:'' }}"
+>
+<input
+    class="input-auth"
+    type="text"
+    name="telefono"
+    placeholder="Teléfono"
+    value="{{ datos_registro.telefono|default:'' }}"
+>
+                            <input
+                                class="input-auth"
+                                type="password"
+                                name="password1"
+                                placeholder="Contraseña"
+                            >
+
+                            <input
+                                class="input-auth"
+                                type="password"
+                                name="password2"
+                                placeholder="Confirmar"
+                            >
+
+
+                            <label class="terminos-check">
+
+                                <span>
+                                    Acepto los
+                                    <a href="/terminos/" target="_blank">
+                                        términos y condiciones
+                                    </a>
+                                </span>
+
+                                <input
+                                    type="checkbox"
+                                    name="acepta_terminos"
+                                >
+
+                            </label>
+
+
+
+                            <button class="btn-login">
+                                Registrarse
+                            </button>
+
+                            {% if mensaje %}
+
+                            <p style="color:red; margin-top:10px;">
+
+                                {{ mensaje }}
+
+                            </p>
+
+                            {% endif %}
+
+                        </form>
+
+                        <span
+                            onclick="mostrarLogin()"
+                            class="switch-link">
+
+                            Volver
+
+                        </span>
+
+                    </div>
+
+                    <!-- RESET -->
+
+                    <div
+                        class="auth-section"
+                        id="reset-box"
+                        style="display:none;"
+                    >
+
+                        <h3>
+                            Recuperar contraseña
+                        </h3>
+
+                        <!-- PASO 1 -->
+
+                        <form
+    method="POST"
+    action="/recuperar/"
+    id="paso1"
+    {% if mostrar_paso2 or mostrar_paso3 %}
+    style="display:none;"
+    {% endif %}
+>
+
+                            {% csrf_token %}
+
+                            <input
+                                class="input-auth"
+                                type="email"
+                                name="email"
+                                placeholder="Correo"
+                            >
+
+                            <button class="btn-login">
+                                Enviar código
+                            </button>
+
+                        </form>
+
+                        <!-- PASO 2 -->
+
+                        <form
+                            method="POST"
+                            action="/verificar-codigo/"
+                            id="paso2"
+                            style="display:none;"
+                        >
+
+                            {% csrf_token %}
+
+                            <input
+                                class="input-auth"
+                                type="text"
+                                name="codigo"
+                                placeholder="Código"
+                            >
+
+                            <button class="btn-login">
+                                Verificar
+                            </button>
+
+                        </form>
+
+                        <!-- PASO 3 -->
+
+                       <!-- PASO 3 -->
+
+<form
+    method="POST"
+    action="/nueva-password/"
+    id="paso3"
+    style="display:none;"
+>
+
+    {% csrf_token %}
+
+    <input
+        class="input-auth"
+        type="password"
+        name="password"
+        placeholder="Nueva contraseña"
+    >
+
+    <input
+        class="input-auth"
+        type="password"
+        name="confirmar_password"
+        placeholder="Confirmar contraseña"
+    >
+
+    <button class="btn-login">
+        Cambiar contraseña
+    </button>
+
+</form>
+
+                        <span
+                            onclick="mostrarLogin()"
+                            class="switch-link">
+
+                            Volver
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </nav>
+
+</header>
+
+{% block content %}
+{% endblock %}
+<!-- MODAL CONSULTA -->
+
+<div
+    class="modal-consulta"
+    id="modalConsulta"
+>
+
+    <div class="consulta-box">
+
+        <span
+            class="cerrar-consulta"
+            onclick="cerrarConsulta()"
+        >
+            ×
+        </span>
+
+        <h2>
+            Consultar vehículo
+        </h2>
+
+        <p class="texto-consulta">
+
+            Consulta información oficial
+            del vehículo a través del RUNT.
+
+            <br><br>
+
+            ⚠️ Recomendamos verificar
+            también la moto presencialmente
+            ante la DIJIN.
+
+        </p>
+<div class="input-consulta">
+
+    <select id="motoSelect" onchange="seleccionarMoto()">
+
+        <option value="">
+            Seleccione una moto
+        </option>
+
+    </select>
+
+   
+
+</div>
+
+<input
+    type="hidden"
+    id="placaInput"
+>
+        <a
+            href="https://www.fcm.org.co/simit/#/home-public"
+            target="_blank"
+            class="btn-runt"
+        >
+
+            Consultar en RUNT
+
+        </a>
+
+        <p
+            id="mensajeCopiado"
+            class="mensaje-copiado"
+        >
+            Placa copiada
+        </p>
+
+    </div>
+
+</div>
+<script>
+
+const btnMenu =
+document.querySelector('.btn-menu');
+
+const panel =
+document.querySelector('.panel-admin');
+
+const cerrar =
+document.querySelector('.cerrar-panel');
+
+btnMenu.onclick = () => {
+
+    panel.style.display =
+    panel.style.display === "block"
+    ? "none"
+    : "block";
+
+};
+
+cerrar.onclick = () => {
+
+    panel.style.display = "none";
+
+};
+
+window.onclick = (e) => {
+
+    if(!e.target.closest('.menu-admin')){
+
+        panel.style.display = "none";
+
+    }
+
+};
+
+// LOGIN
+
+function mostrarRegistro(){
+
+    document.getElementById(
+        "login-box"
+    ).style.display = "none";
+
+    document.getElementById(
+        "registro-box"
+    ).style.display = "block";
+
+    document.getElementById(
+        "reset-box"
+    ).style.display = "none";
+
+}
+
+function mostrarLogin(){
+
+    document.getElementById(
+        "login-box"
+    ).style.display = "block";
+
+    document.getElementById(
+        "registro-box"
+    ).style.display = "none";
+
+    document.getElementById(
+        "reset-box"
+    ).style.display = "none";
+
+}
+
+function mostrarReset(){
+
+    document.getElementById(
+        "login-box"
+    ).style.display = "none";
+
+    document.getElementById(
+        "registro-box"
+    ).style.display = "none";
+
+    document.getElementById(
+        "reset-box"
+    ).style.display = "block";
+
+}
+
+// RESET
+
+function mostrarPaso2(){
+
+    document.getElementById(
+        "paso1"
+    ).style.display = "none";
+
+    document.getElementById(
+        "paso2"
+    ).style.display = "block";
+
+}
+
+function mostrarPaso3(){
+
+    document.getElementById(
+        "paso2"
+    ).style.display = "none";
+
+    document.getElementById(
+        "paso3"
+    ).style.display = "block";
+
+}
+
+var paso2Activo =
+"{{ mostrar_paso2|default:'' }}";
+
+var paso3Activo =
+"{{ mostrar_paso3|default:'' }}";
+
+if(paso2Activo){
+
+    mostrarReset();
+    mostrarPaso2();
+
+}
+
+if(paso3Activo){
+
+    mostrarReset();
+    mostrarPaso3();
+
+}
+
+
+// CONSULTA PLACA
+
+function abrirConsulta(){
+
+    document.getElementById(
+        "modalConsulta"
+    ).style.display = "flex";
+
+    cargarMotos();
+
+}
+
+function cerrarConsulta(){
+
+    document.getElementById(
+        "modalConsulta"
+    ).style.display = "none";
+
+
+}
+
+async function cargarMotos(){
+
+    const select =
+    document.getElementById("motoSelect");
+
+    if(select.options.length > 1){
+        return;
+    }
+
+    const respuesta =
+    await fetch("/obtener-motos/");
+
+    const motos =
+    await respuesta.json();
+
+    motos.forEach(moto=>{
+
+        const opcion =
+        document.createElement("option");
+
+        opcion.value = moto.placa;
+
+        opcion.textContent =
+            moto.marca +
+            " " +
+            moto.linea;
+
+        select.appendChild(opcion);
+
+    });
+
+}
+
+function seleccionarMoto(){
+
+    const placa =
+    document.getElementById("motoSelect").value;
+
+    document.getElementById(
+        "placaInput"
+    ).value = placa;
+
+    if(placa){
+
+        navigator.clipboard.writeText(placa);
+
+        const mensaje =
+        document.getElementById(
+            "mensajeCopiado"
+        );
+
+        mensaje.innerHTML =
+        "Placa copiada automáticamente";
+
+        mensaje.style.opacity = "1";
+
+        setTimeout(() => {
+
+            mensaje.style.opacity = "0";
+
+        }, 2000);
+
+    }
+
+}
+
+function copiarPlaca(){
+
+    const input =
+    document.getElementById(
+        "placaInput"
+    );
+
+    input.select();
+
+    input.setSelectionRange(0, 99999);
+
+    navigator.clipboard.writeText(
+        input.value
+    );
+
+    const mensaje =
+    document.getElementById(
+        "mensajeCopiado"
+    );
+
+    mensaje.style.opacity = "1";
+
+    setTimeout(() => {
+
+        mensaje.style.opacity = "0";
+
+    }, 2000);
+
+}
+
+if("{{ mostrar_registro }}" == "True"){
+
+    panel.style.display = "block";
+
+    mostrarRegistro();
+
+}   
+</script>
+
+</body>
+
+</html>

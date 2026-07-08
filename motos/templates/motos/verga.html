@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+{% load static %}
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  background: #f1f5f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("/static/motos/img/modelo-casco.jpg") 1% center / cover no-repeat;
+}
+
+.login-container {
+  width: 360px;
+  padding: 30px;
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.67); /* transparente */
+  backdrop-filter: blur(12px);           /* desenfoque */
+  -webkit-backdrop-filter: blur(12px);   /* Safari */
+
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+}
+
+.error{
+
+    color:red;
+
+    text-align:center;
+
+    margin-top:15px;
+
+    font-size:13px;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.tabs button {
+  background: none;
+  border: none;
+  margin: 0 10px;
+  font-weight: bold;
+  color: #888;
+  cursor: pointer;
+}
+
+.tabs .active {
+  color: #000;
+  border-bottom: 2px solid #000;
+}
+
+label {
+  font-size: 13px;
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.row a {
+  text-decoration: none;
+  color: #555;
+}
+
+button.login-btn {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(to right, #111, #000);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  cursor: pointer;
+}
+.titulo {
+  text-align: center;
+  margin-bottom: 5px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.subtitulo {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 13px;
+  color: #666;
+}
+button.login-btn:hover {
+  opacity: 0.9;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 13px;
+}
+.login-btn {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background: black;
+  color: white;
+  border-radius: 8px;
+  text-align: center;
+  text-decoration: none;
+}
+.avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.avatar img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+
+  border: 2px solid rgba(0,0,0,0.2);
+}
+</style>
+
+</head>
+<body>
+
+<div class="login-container">
+  <div class="avatar">
+  <img src="{% static 'motos/img/usuario.png' %}">
+</div>
+
+    <h2 class="titulo">Bienvenido de nuevo!</h2>
+    <p class="subtitulo">Inicia sesión para continuar</p>
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    <label>
+        Usuario
+    </label>
+
+    <input 
+        type="text"
+        name="usuario"
+        placeholder="Ingresa tu usuario"
+    >
+
+    <div class="row">
+
+        <label>
+            Contraseña
+        </label>
+
+    </div>
+
+    <input 
+        type="password"
+        name="contraseña"
+        placeholder="Ingresa tu contraseña"
+    >
+
+    <button type="submit" class="login-btn">
+        Ingresar
+    </button>
+
+    {% if error %}
+
+    <div class="error">
+
+    {{ error }}
+
+    </div>
+
+    </div>
+
+    {% endif %}
+
+</form>
+
+
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,629 @@
+{% extends 'motos/base.html' %}
+{% load static %}
+{% load humanize %}
+{% block title %}
+Comprar moto
+{% endblock %}
+
+{% block content %}
+
+<!-- BUSQUEDA -->
+<section class="busqueda">
+
+    <div class="contenido-busqueda">
+
+        <h1>Busca tu próxima moto</h1>
+
+        <!-- FILTROS -->
+        <form method="GET" class="filtros">
+
+            <select name="marca">
+                <option value="">Marca</option>
+
+                {% for m in marcas %}
+                    <option value="{{ m }}">{{ m }}</option>
+                {% endfor %}
+            </select>
+
+            <input type="number" name="precio" placeholder="Precio máximo">
+
+            <input type="number" name="cilindraje" placeholder="Cilindraje">
+
+            <button type="submit">Buscar</button>
+
+<button
+    type="button"
+    id="abrirComparador"
+    class="btn-comparador-top"
+>
+    Comparar motos
+</button>
+
+        </form>
+
+        <!-- MODAL COMPARADOR -->
+
+<div
+    id="modalComparador"
+    class="modal-comparador"
+    style="display:none;"
+>
+
+    <div class="modal-comparador-contenido">
+
+     
+
+        <h2>
+     Comparador inteligente de motos
+</h2> <br>
+
+<p class="subtitulo-comparador">
+
+    Compara dos motos y descubre cuál ofrece mejor precio, menor kilometraje y mayor rendimiento.
+
+</p>
+
+        <div class="comparador-selectores">
+
+            <div>
+
+                <label>Moto 1</label>
+
+                <select id="moto1">
+
+                    <option value="">
+                        Seleccionar moto
+                    </option>
+
+                    {% for moto in motos %}
+
+                    <option
+                        value="{{ moto.id }}"
+                        data-precio="{{ moto.precio }}"
+                        data-imagen="{{ moto.imagen.url }}"
+                        data-modelo="{{ moto.modelo }}"
+                        data-cilindraje="{{ moto.cilindraje }}"
+                        data-kilometraje="{{ moto.kilometraje }}"
+                    >
+
+                        {{ moto.marca }} {{ moto.modelo }}
+
+                    </option>
+
+                    {% endfor %}
+
+                </select>
+
+            </div>
+
+            <div class="vs">
+                VS
+            </div>
+
+            <div>
+
+                <label>Moto 2</label>
+
+                <select id="moto2">
+
+                    <option value="">
+                        Seleccionar moto
+                    </option>
+
+                    {% for moto in motos %}
+
+                    <option
+                        value="{{ moto.id }}"
+                        data-precio="{{ moto.precio }}"
+                        data-modelo="{{ moto.modelo }}"
+                        data-imagen="{{ moto.imagen.url }}"
+                        data-cilindraje="{{ moto.cilindraje }}"
+                        data-kilometraje="{{ moto.kilometraje }}"
+                    >
+
+                        {{ moto.marca }} {{ moto.modelo }}
+
+                    </option>
+
+                    {% endfor %}
+
+                </select>
+
+            </div>
+
+        </div>
+
+        <button
+            id="btnComparar"
+            class="btn-comparar-modal"
+        >
+            Comparar
+        </button>
+
+        <div id="resultadoComparacion">
+
+    <div
+        id="cabeceraComparacion"
+        style="display:none;"
+    >
+
+        <div class="motos-comparadas">
+
+            <div
+                id="infoMoto1"
+                class="moto-comparada"
+            >
+
+            </div>
+
+            <div class="vs-grande">
+
+                VS
+
+            </div>
+
+            <div
+                id="infoMoto2"
+                class="moto-comparada"
+            >
+
+            </div>
+
+        </div>
+
+        <div
+            id="tablaComparacion"
+        >
+
+        </div>
+
+    </div>
+
+</div>
+
+    </div>
+
+</div>
+
+        <!-- GRID MOTOS -->
+        <div class="motos">
+
+            {% for moto in motos %}
+
+            <div class="card"
+                data-marca="{{ moto.marca }}"
+                data-modelo="{{ moto.modelo }}"
+                data-precio="{{ moto.precio }}"
+                data-cilindraje="{{ moto.cilindraje }}"
+                data-kilometraje="{{ moto.kilometraje }}"
+                data-descripcion="{{ moto.descripcion }}"
+                data-imagen="{{ moto.imagen.url }}"
+                id="moto-{{ moto.id }}"
+            >
+
+                <img src="{{ moto.imagen.url }}">
+
+                <h3>
+    {{ moto.marca }} {{ moto.modelo }}
+</h3>
+
+
+</p>   
+
+                <div class="precio-favorito">
+
+                   <p class="precio-moto">
+                        ${{ moto.precio|intcomma }}
+                    </p>
+
+                    <button
+                        class="favorito-btn
+                        {% if moto.id in favoritos_ids %}activo{% endif %}"
+                        data-id="{{ moto.id }}">
+                    </button>
+
+                </div>
+
+                <a href="/moto/{{ moto.id }}/" class="btn rojo">
+                    Ver detalles
+                </a>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+        <!-- PAGINACION -->
+        <div class="paginacion">
+
+            {% if motos.has_previous %}
+                <a href="?page=1">«</a>
+                <a href="?page={{ motos.previous_page_number }}">‹</a>
+            {% endif %}
+
+            <span class="pagina-actual">
+                {{ motos.number }}
+            </span>
+
+            {% if motos.has_next %}
+                <a href="?page={{ motos.next_page_number }}">›</a>
+                <a href="?page={{ motos.paginator.num_pages }}">»</a>
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <div class="footer-col">
+            <h3>Compra venta usadas Bello</h3>
+            <p>📍 Cl. 49 #46-32, Prado,<br>Bello, Antioquia</p>
+            <p>✉️ usadasbello@gmail.com</p>
+            <p>📞 +57 312 298 1888</p>
+        </div>
+
+        <div class="footer-col">
+            <h3>Enlaces rápidos</h3>
+            <a href="#">Inicio</a>
+            <a href="#">Comprar moto</a>
+            <a href="#">Vender mi moto</a>
+            <a href="#">Servicios</a>
+            <a href="#">Nosotros</a>
+        </div>
+
+        <div class="footer-col">
+            <h3>Redes</h3>
+            <a href="#">Instagram</a>
+            <a href="#">Facebook</a>
+            <a href="#">WhatsApp</a>
+        </div>
+
+    </div>
+
+</footer>
+
+<!-- SCRIPT FAVORITOS -->
+<script>
+
+const favoritos = document.querySelectorAll('.favorito-btn');
+
+favoritos.forEach(btn => {
+
+    btn.addEventListener('click', async () => {
+
+        const id = btn.dataset.id;
+
+        const response = await fetch(`/toggle-favorito/${id}/`);
+
+        const data = await response.json();
+
+        if(data.agregado){
+            btn.classList.add('activo');
+        } else {
+            btn.classList.remove('activo');
+
+            if(window.location.pathname === "/favoritos/"){
+                const card = document.getElementById(`moto-${id}`);
+                card.remove();
+            }
+        }
+
+    });
+
+});
+
+</script>
+
+<script>
+
+document.getElementById(
+    "abrirComparador"
+).onclick = () => {
+
+    const comp =
+    document.getElementById(
+        "modalComparador"
+    );
+
+    comp.style.display =
+    comp.style.display === "none"
+    ? "block"
+    : "none";
+
+};
+
+document.getElementById(
+    "btnComparar"
+).onclick = () => {
+
+    const moto1 =
+    document.getElementById(
+        "moto1"
+    );
+
+    const moto2 =
+    document.getElementById(
+        "moto2"
+    );
+
+    if(
+        !moto1.value ||
+        !moto2.value
+    ){
+
+        alert(
+            "Selecciona dos motos"
+        );
+
+        return;
+    }
+
+    const m1 =
+    moto1.options[
+        moto1.selectedIndex
+    ];
+
+    const m2 =
+    moto2.options[
+        moto2.selectedIndex
+    ];
+
+    
+
+    const precio1 =
+    Number(
+        m1.dataset.precio
+    );
+
+    const precio2 =
+    Number(
+        m2.dataset.precio
+    );
+
+    const modelo1 =
+    Number(
+        m1.dataset.modelo
+    );
+
+    const modelo2 =
+    Number(
+        m2.dataset.modelo
+    );
+
+    const cil1 =
+    Number(
+        m1.dataset.cilindraje
+    );
+
+    const cil2 =
+    Number(
+        m2.dataset.cilindraje
+    );
+
+    const km1 =
+    Number(
+        m1.dataset.kilometraje
+    );
+
+    const km2 =
+    Number(
+        m2.dataset.kilometraje
+    );
+
+    document.getElementById(
+        "cabeceraComparacion"
+    ).style.display = "block";
+
+    document.getElementById(
+        "infoMoto1"
+    ).innerHTML = `
+
+    <img
+    src="${m1.dataset.imagen}"
+    style="
+    max-width:300px;
+    width:100%;
+    height:200px;
+    
+    display:block;
+    margin:0 auto 15px auto;
+    background:#f5f5f5;
+    border-radius:12px;
+    "
+    ">
+
+    <h3>
+    ${m1.text}
+    </h3>
+
+    <p>
+    💰 $${precio1}
+    </p>
+
+    <p>
+    ⚙️ ${cil1} cc
+    </p>
+
+    <p>
+    🛣️ ${km1} km
+    </p>
+
+    `;
+
+    document.getElementById(
+        "infoMoto2"
+    ).innerHTML = `
+
+    <img
+    src="${m2.dataset.imagen}"
+    style="
+    max-width:300px;
+    width:100%;
+    height:200px;
+    
+    display:block;
+    margin:0 auto 15px auto;
+    background:#f5f5f5;
+    border-radius:12px;
+    "
+    >
+
+    <h3>
+    ${m2.text}
+    </h3>
+
+    <p>
+    💰 $${precio2}
+    </p>
+
+    <p>
+    ⚙️ ${cil2} cc
+    </p>
+
+    <p>
+    🛣️ ${km2} km
+    </p>
+
+    `;
+
+    document.getElementById(
+        "tablaComparacion"
+    ).innerHTML = `
+
+    <table class="tabla-comparacion">
+
+    <tr>
+
+        <th>
+        Característica
+        </th>
+
+        <th>
+        ${m1.text}
+        </th>
+
+        <th>
+        ${m2.text}
+        </th>
+
+    </tr>
+
+    <tr>
+
+        <td>Precio</td>
+
+        <td class="${
+        precio1 < precio2
+        ? 'valor-mejor'
+        : 'valor-peor'
+        }">
+
+        $${precio1}
+
+        </td>
+
+        <td class="${
+        precio2 < precio1
+        ? 'valor-mejor'
+        : 'valor-peor'
+        }">
+
+        $${precio2}
+
+        </td>
+
+    </tr>
+
+    <tr>
+
+        <td>Modelo</td>
+
+        <td class="${
+        modelo1 > modelo2
+        ? 'valor-mejor'
+        : 'valor-peor'
+        }">
+
+        ${modelo1}
+
+        </td>
+
+        <td class="${
+        modelo2 > modelo1
+        ? 'valor-mejor'
+        : 'valor-peor'
+        }">
+
+        ${modelo2}
+
+        </td>
+
+    </tr>
+
+    <tr>
+
+        <td>Cilindraje</td>
+
+        <td class="${
+        cil1 > cil2
+        ? 'valor-mejor'
+        : 'valor-peor'
+        }">
+
+        ${cil1} cc
+
+        </td>
+
+        <td class="${
+        cil2 > cil1
+        ? 'valor-mejor'
+        : 'valor-peor'
+        }">
+
+        ${cil2} cc
+
+        </td>
+
+    </tr>
+
+    <tr>
+
+        <td>Kilometraje</td>
+
+        <td class="${
+        km1 < km2
+        ? 'valor-mejor'
+        : 'valor-peor'
+        }">
+
+        ${km1} km
+
+        </td>
+
+        <td class="${
+        km2 < km1
+        ? 'valor-mejor'
+        : 'valor-peor'
+        }">
+
+        ${km2} km
+
+        </td>
+
+    </tr>
+
+    </table>
+
+    `;
+
+};
+
+</script>
+{% endblock %}

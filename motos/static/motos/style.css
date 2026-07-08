@@ -1,0 +1,2488 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+}
+
+.logo {
+    font-weight: bold;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+/* HERO */
+.hero {
+    height: 90vh;
+    background: url('/static/motos/img/moto.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    padding-left: 60px;
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    top: 0;
+    left: 0;
+}
+
+.contenido {
+    position: relative;
+    color: white;
+    max-width: 500px;
+}
+
+.contenido h1 {
+    font-size: 40px;
+    line-height: 1.2;
+}
+
+.contenido span {
+    color: red;
+}
+
+.contenido p {
+    margin: 15px 0;
+}
+
+/* BOTONES */
+.detalle-botones {
+    display: flex;
+    gap: 15px;
+}
+
+.btn {
+    padding: 10px 20px;
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+}
+
+.rojo {
+    background: red;
+}
+
+.amarillo {
+    background: gold;
+    color: black;
+}
+
+/* FOOTER */
+.footer {
+    background: #111;
+    color: white;
+    padding: 40px 60px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.footer-col {
+    flex: 1;
+}
+
+.footer-col h3 {
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.footer-col p,
+.footer-col a {
+    font-size: 14px;
+    color: #ccc;
+    text-decoration: none;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.footer-col a:hover {
+    color: white;
+}
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.menu a:hover {
+    color: red;
+}
+
+/* ================= SECCIÓN BUSQUEDA ================= */
+.busqueda {
+    padding: 60px;
+    background: #f4f4f4;
+    min-height: 100vh;
+}
+
+.contenido-busqueda h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+/* ================= FILTROS ================= */
+.filtros {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.filtros select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    min-width: 150px;
+}
+
+.filtros button {
+    padding: 10px 20px;
+    background: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.filtros button:hover {
+    background: darkred;
+}
+
+/* ================= GRID DE MOTOS ================= */
+.motos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+/* ================= CARD ================= */
+.card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    padding-bottom: 15px;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.card h3 {
+    margin: 15px 0;
+    font-size: 16px;
+}
+
+/* ================= BOTÓN ================= */
+.btn {
+    display: inline-block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+.rojo {
+    background: red;
+}
+
+
+
+/*NOSOTROS*/
+
+/* NOSOTROS */
+
+.nosotros{
+    padding: 40px;
+    background: #0b0b0b;
+    color: white;
+}
+
+.contenedor-nosotros{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.texto-nosotros h1{
+    font-size: 33px;
+}
+
+.texto-nosotros span{
+    color: yellow;
+}
+
+.texto-nosotros p{
+    margin-top: 10px;
+    color: #ccc;
+    font-size: 19px;
+}
+
+.imagen-nosotros img{
+    width: 100%;
+    border-radius: 10px;
+}
+
+.info-nosotros{
+    display: grid;
+    grid-template-columns: 1fr      ;
+    gap: 30px;
+    margin-top: 40px;
+   
+}
+
+.horarios{
+    margin-left: 18px;
+    font-size: 27px;
+
+}
+
+.info-nosotros .horarios p{
+    font-size: 25px;
+}
+
+.ubicacion iframe{
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+    border: none;
+}
+
+.ubicacion span{
+    color: yellow;
+}
+
+.horarios p{
+    color: #ccc;
+    font-size: 14px;
+}
+
+
+
+/* MODAL BIEN HECHO */
+.modal{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.8);
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+.modal-contenido{
+    background:#b1b1b1;
+    padding:20px;
+    border-radius:10px;
+    width:400px;
+    max-height:90vh;
+    overflow:auto;
+}
+
+.modal img{
+    width:100%;
+    border-radius:10px;
+    margin-bottom:15px;
+}
+
+.cerrar{
+    float:right;
+    font-size:25px;
+    cursor:pointer;
+}
+
+.info p{
+    margin:5px 0;
+    color:#ccc;
+}
+
+.modal p{
+    color:#000;
+}
+
+/* ADMIN */
+
+.menu-admin{
+    position:relative;
+    margin-left:30px;
+}
+
+/* BOTON */
+
+.btn-menu{
+    background:transparent;
+    border:none;
+
+    color:white;
+
+    font-size:15px;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.btn-menu:hover{
+    color:#ffd000;
+}
+
+/* PANEL */
+
+.panel-admin{
+
+    position:absolute;
+
+    top:45px;
+    right:0;
+
+    width:320px;
+
+    background:#323233;
+
+    border-radius:20px;
+
+    padding:20px;
+
+    display:none;
+
+    box-shadow:0 20px 60px rgba(0,0,0,0.5);
+
+    z-index:9999;
+}
+
+/* TITULO */
+
+.panel-admin h3{
+    color:white;
+
+    font-size:20px;
+
+    margin-bottom:15px;
+     white-space:nowrap;
+}
+
+/* TEXTO */
+
+.panel-admin p{
+    color:#bdbdbd;
+
+    line-height:1.6;
+    font-size:15px;
+
+    margin-bottom:25px;
+}
+
+/* BOTON PANEL */
+
+/* BOTONES NORMALES */
+
+
+.panel-admin h3,
+.panel-admin p,
+.usuario-info h3,
+.usuario-info p{
+    color:#000 !important;
+}
+.btn-admin{
+
+    display:block;
+
+    text-align:center;
+
+    background:#dc5d3a !important; /* naranja */
+
+    color:white !important;
+
+    text-decoration:none;
+
+    padding:10px;
+
+    border-radius:12px;
+
+    font-weight:600;
+
+    transition:0.2s;
+}
+
+.btn-admin:hover{
+
+    filter:brightness(0.95);
+
+    transform:scale(1.02);
+}
+
+
+/* 🔴 BOTÓN CERRAR SESIÓN */
+.btn-admin.salir{
+
+    background:#c11616 !important; /* rojo */
+}
+
+/* hover del rojo */
+.btn-admin.salir:hover{
+
+    filter:brightness(0.9);
+}
+
+/* CERRAR */
+
+.cerrar-panel{
+
+    position:absolute;
+
+    top:12px;
+    right:16px;
+
+    background:none;
+
+    border:none;
+
+    color:#888;
+
+    font-size:24px;
+
+    cursor:pointer;
+}
+
+.btn-menu{
+    background:transparent;
+    border:none;
+
+    color:white;
+
+    font-size:25px;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+
+.panel{
+
+    min-height:100vh;
+
+    background:#0b0f14;
+
+    padding:120px 40px;
+
+    color:white;
+}
+
+.panel-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:40px;
+}
+
+.btn-crear{
+
+    background:#ffd000;
+
+    color:black;
+
+    padding:14px 22px;
+
+    border-radius:12px;
+
+    text-decoration:none;
+
+    font-weight:bold;
+}
+
+.motos-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(280px,1fr));
+
+    gap:30px;
+}
+
+.moto-card{
+
+    background:#111827;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    padding-bottom:20px;
+}
+
+.moto-card img{
+
+    width:100%;
+
+    height:220px;
+
+    object-fit:cover;
+}
+
+.moto-card h2{
+
+    padding:20px 20px 10px;
+}
+
+.moto-card p{
+
+    padding:0 20px;
+
+    color:#ffd000;
+
+    font-size:22px;
+
+    font-weight:bold;
+}
+
+/* mensaje exito vender */
+
+.mensaje-exito{
+
+    width:100%;
+
+    background:rgba(74, 222, 128, 0.15);
+
+    border:1px solid rgba(74, 222, 128, 0.35);
+
+    color:#86efac;
+
+    padding:14px;
+
+    border-radius:8px;
+
+    text-align:center;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    margin-top:5px;
+
+    backdrop-filter:blur(10px);
+}
+
+/* ========================= */
+/* SECCIONES NUEVAS INICIO */
+/* ========================= */
+
+.titulo-seccion{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.titulo-seccion h2{
+    font-size:40px;
+    margin-bottom:10px;
+}
+
+.titulo-seccion p{
+    color:#777;
+}
+
+/* MOTOS DESTACADAS */
+
+.inicio-motos{
+    padding:90px 60px;
+    background:#f5f5f5;
+}
+
+.inicio-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.inicio-card{
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.inicio-card:hover{
+    transform:translateY(-8px);
+}
+
+.inicio-card img{
+    width:100%;
+    height:240px;
+    object-fit:cover;
+}
+
+.inicio-info{
+    padding:25px;
+}
+
+.inicio-info h3{
+    margin-bottom:10px;
+    font-size:24px;
+}
+
+.inicio-info p{
+    color:red;
+    font-size:22px;
+    font-weight:bold;
+    margin-bottom:20px;
+}
+
+.inicio-btn{
+    display:inline-block;
+    padding:12px 20px;
+    background:black;
+    color:white;
+    text-decoration:none;
+    border-radius:10px;
+}
+
+/* ESTADISTICAS */
+
+.estadisticas{
+    background:#0f0f0f;
+    color:white;
+    padding:90px 40px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:30px;
+    text-align:center;
+}
+
+.estadistica h2{
+    font-size:60px;
+    color:#ff0000;
+    margin-bottom:10px;
+}
+
+.estadistica p{
+    color:#ccc;
+    font-size:18px;
+}
+
+/* MARCAS */
+
+.marcas{
+    padding:90px 60px;
+    background:white;
+}
+
+.marcas-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:20px;
+}
+
+.marca-item{
+    background:#111;
+    color:white;
+    text-align:center;
+    padding:25px;
+    border-radius:14px;
+    font-size:20px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.marca-item:hover{
+    background:red;
+}
+
+/* ELEGIRNOS */
+
+.elegirnos{
+    padding:90px 60px;
+    background:#f8f8f8;
+}
+
+.elegir-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.elegir-card{
+    background:white;
+    padding:35px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.06);
+}
+
+.elegir-card h3{
+    margin-bottom:15px;
+    font-size:24px;
+}
+
+.elegir-card p{
+    color:#666;
+    line-height:1.7;
+}
+
+/* ================= CALCULADORA ================= */
+
+.calculadora{
+
+    padding:100px 60px;
+
+    background:#0d1117;
+
+    color:white;
+}
+
+.calculadora-contenido{
+
+    max-width:1200px;
+
+    margin:auto;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:60px;
+}
+
+/* TEXTO */
+
+.calculadora-texto{
+
+    flex:1;
+}
+
+.mini-calculo{
+
+    color:#ff3c00;
+
+    font-size:14px;
+
+    font-weight:bold;
+
+    letter-spacing:2px;
+
+    margin-bottom:20px;
+}
+
+.calculadora-texto h2{
+
+    font-size:55px;
+
+    line-height:1.1;
+
+    margin-bottom:20px;
+}
+
+.calculadora-texto p{
+
+    color:#bdbdbd;
+
+    font-size:18px;
+
+    line-height:1.7;
+}
+
+/* BOX */
+
+.calculadora-box{
+
+    flex:1;
+
+    background:#161b22;
+
+    padding:35px;
+
+    border-radius:22px;
+
+    border:1px solid rgba(255,255,255,0.06);
+}
+
+/* CAMPOS */
+
+.campo-calculo{
+
+    margin-bottom:20px;
+}
+
+.campo-calculo label{
+
+    display:block;
+
+    margin-bottom:10px;
+
+    color:#d1d5db;
+
+    font-size:14px;
+}
+
+.campo-calculo input,
+.campo-calculo select{
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#242b36;
+
+    color:white;
+
+    font-size:15px;
+
+    outline:none;
+}
+
+.campo-calculo input::placeholder{
+
+    color:#9ca3af;
+}
+
+/* BOTON */
+
+.btn-calcular{
+
+    width:100%;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#ff3c00;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.btn-calcular:hover{
+
+    background:#ff5722;
+
+    transform:translateY(-2px);
+}
+
+/* RESULTADO */
+
+.resultado-calculo{
+
+    margin-top:25px;
+
+    background:#0f141b;
+
+    padding:25px;
+
+    border-radius:18px;
+
+    text-align:center;
+}
+
+.resultado-calculo h3{
+
+    font-size:42px;
+
+    color:#4ade80;
+
+    margin-bottom:10px;
+}
+
+.resultado-calculo p{
+
+    color:#9ca3af;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    .calculadora-contenido{
+
+        flex-direction:column;
+    }
+
+    .calculadora-texto h2{
+
+        font-size:40px;
+    }
+
+}
+
+/* ========================= */
+/* HERO PREMIUM */
+/* ========================= */
+
+.hero-premium{
+
+    height:92vh;
+
+    margin:14px;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    position:relative;
+
+    background:
+    linear-gradient(
+        rgba(0,0,0,0.45),
+        rgba(0,0,0,0.55)
+    ),
+    url('/static/motos/img/hero-premium.jpg');
+
+    background-size:cover;
+    background-position:center;
+
+    display:flex;
+    align-items:center;
+
+    padding-left:70px;
+}
+
+.hero-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    radial-gradient(
+        circle at left,
+        rgba(255,255,255,0.12),
+        transparent 40%
+    );
+}
+
+.hero-premium-contenido{
+
+    position:relative;
+
+    z-index:2;
+
+    max-width:650px;
+
+    color:white;
+}
+
+.mini-texto{
+
+    font-size:14px;
+
+    letter-spacing:2px;
+
+    font-weight:bold;
+
+    margin-bottom:25px;
+}
+
+.hero-premium-contenido h1{
+
+    font-size:82px;
+
+    line-height:0.95;
+
+    font-weight:900;
+
+    margin-bottom:40px;
+
+    text-transform:uppercase;
+}
+
+.hero-btn{
+
+    display:inline-block;
+
+    background:#f4511e;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:20px 34px;
+
+    border-radius:14px;
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    transition:0.3s;
+}
+
+.hero-btn:hover{
+
+    transform:translateY(-4px);
+
+    background:#ff5722;
+
+    box-shadow:
+    0 15px 30px rgba(244,81,30,0.35);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    .hero-premium{
+
+        padding:40px;
+    }
+
+    .hero-premium-contenido h1{
+
+        font-size:48px;
+    }
+
+}
+
+
+
+
+/* ================= COMPRAR MOTOS ================= */
+
+.motos{
+
+    display:grid;
+
+    grid-template-columns:repeat(4, minmax(0,1fr));
+
+    gap:25px;
+
+    margin-top:40px;
+}
+
+/* CARD */
+
+.card{
+
+    background:white;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+
+    transition:0.3s;
+
+    display:flex;
+
+    flex-direction:column;
+}
+
+.card:hover{
+
+    transform:translateY(-5px);
+}
+
+.card img{
+
+    width:100%;
+
+    height:220px;
+
+    object-fit:cover;
+}
+
+/* CONTENIDO */
+
+.card h3{
+
+    font-size:20px;
+
+    margin:18px 18px 10px;
+
+    min-height:48px;
+}
+
+.card p{
+
+    font-size:28px;
+
+    font-weight:bold;
+
+    color:#111827;
+
+    margin:0 18px 20px;
+}
+
+/* BOTON */
+
+.card .btn{
+
+    margin:0 18px 20px;
+
+    text-align:center;
+
+    padding:14px;
+
+    border-radius:12px;
+
+    font-size:15px;
+
+    font-weight:bold;
+
+    text-decoration:none;
+
+    display:block;
+}
+
+.rojo{
+
+    background:#ff1d1d;
+
+    color:white;
+}
+
+.rojo:hover{
+
+    background:#d60000;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1200px){
+
+    .motos{
+
+        grid-template-columns:repeat(3, 1fr);
+    }
+
+}
+
+@media(max-width:900px){
+
+    .motos{
+
+        grid-template-columns:repeat(2, 1fr);
+    }
+
+}
+
+@media(max-width:600px){
+
+    .motos{
+
+        grid-template-columns:1fr;
+    }
+
+}
+
+/* ================= PAGINACION ================= */
+
+.paginacion{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-top:50px;
+
+    margin-bottom:20px;
+}
+
+.paginacion a{
+
+    min-width:45px;
+
+    height:45px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#111827;
+
+    color:white;
+
+    text-decoration:none;
+
+    border-radius:12px;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    transition:0.3s;
+}
+
+.paginacion a:hover{
+
+    background:#dc2626;
+
+    transform:translateY(-2px);
+}
+
+.pagina-actual{
+
+    min-width:45px;
+
+    height:45px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#dc2626;
+
+    color:white;
+
+    border-radius:12px;
+
+    font-size:18px;
+
+    font-weight:bold;
+}
+
+
+/* ================= LOGIN ================= */
+
+.login-page{
+
+    min-height:100vh;
+
+    background:#0f172a;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:40px;
+}
+
+.login-box{
+
+    width:100%;
+
+    max-width:1000px;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    background:#111827;
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    box-shadow:0 20px 60px rgba(0,0,0,0.4);
+}
+
+.login-panel,
+.registro-panel{
+
+    padding:50px;
+}
+
+.login-panel{
+
+    background:#18181b;
+}
+
+.registro-panel{
+
+    background:#1f2937;
+}
+
+.login-panel h2,
+.registro-panel h2{
+
+    color:white;
+
+    font-size:32px;
+
+    margin-bottom:30px;
+}
+
+.login-panel form,
+.registro-panel form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+}
+
+.login-panel input,
+.registro-panel input{
+
+    width:100%;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#374151;
+
+    color:white;
+
+    font-size:15px;
+
+    outline:none;
+}
+
+.login-panel button,
+.registro-panel button{
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#ff3c00;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.login-panel button:hover,
+.registro-panel button:hover{
+
+    background:#ff5722;
+}
+
+.precio-linea{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:18px;
+
+    margin:22px 0 28px;
+
+    padding-left:55px;
+}
+
+.precio-moto{
+
+    margin:0;
+
+    font-size:26px;
+
+    font-weight:800;
+
+    color:#111827;
+    line-height:1;
+}
+.precio-favorito{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin:15px 18px 20px;
+}
+.favorito-btn{
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:50%;
+
+    border:none;
+
+    background:#1f2937;
+
+    cursor:pointer;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-shrink:0;
+
+    margin-top:-25px;
+}
+
+
+.favorito-btn::before{
+
+    content:"♡";
+
+    color:white;
+
+    font-size:24px;
+
+    transition:0.25s;
+}
+
+.favorito-btn:hover{
+
+    transform:scale(1.08);
+
+    background:#374151;
+}
+
+.favorito-btn.activo::before{
+
+    content:"♥";
+
+    color:#ff2d55;
+}
+/* ================= PANEL USUARIO PREMIUM ================= */
+
+.panel-admin{
+
+    position:absolute;
+
+    top:55px;
+
+    right:0;
+
+    width:340px;
+
+    background:#111827;
+
+    border-radius:22px;
+
+    padding:25px;
+
+    display:none;
+
+    box-shadow:
+    0 20px 60px rgba(0,0,0,0.45);
+
+    z-index:99999;
+
+    border:1px solid rgba(255,255,255,0.06);
+}
+
+/* HEADER */
+
+.usuario-top{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    margin-bottom:25px;
+
+    padding-bottom:20px;
+
+    border-bottom:
+    1px solid rgba(255,255,255,0.08);
+}
+
+/* AVATAR */
+
+.avatar{
+
+    width:55px;
+
+    height:55px;
+
+    border-radius:50%;
+
+    background:#f4511e;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    color:white;
+}
+
+/* TEXOS */
+
+.usuario-info h3{
+
+    color:white;
+
+    font-size:18px;
+
+    margin-bottom:5px;
+}
+
+.usuario-info p{
+
+    color:#9ca3af;
+
+    font-size:13px;
+}
+
+/* BOTONES */
+
+.btn-admin{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    width:100%;
+
+    padding:15px 18px;
+
+    border-radius:14px;
+
+    text-decoration:none;
+
+    color:white;
+
+    font-size:15px;
+
+    margin-bottom:12px;
+
+    transition:0.25s;
+
+    background:#1f2937;
+}
+
+.btn-admin:hover{
+
+    background:#ff4d1c;
+
+    transform:translateX(4px);
+}
+
+/* BOTON SALIR */
+
+.salir{
+
+    margin-top:20px;
+
+    background:#7f1d1d;
+}
+
+.salir:hover{
+
+    background:#991b1b;
+}
+
+/* CERRAR */
+
+.cerrar-panel{
+
+    position:absolute;
+
+    top:15px;
+
+    right:18px;
+
+    background:none;
+
+    border:none;
+
+    color:#9ca3af;
+
+    font-size:24px;
+
+    cursor:pointer;
+}
+
+.badge{
+
+    margin-left:auto;
+
+    background:#ef4444;
+
+    color:white;
+
+    font-size:12px;
+
+    padding:4px 8px;
+
+    border-radius:10px;
+
+    font-weight:bold;
+}
+
+.panel-admin{
+
+    position:absolute;
+    top:60px;
+    right:0;
+
+    width:360px;
+
+    background:#ffffff;
+
+    border-radius:12px;
+
+    padding:10px;
+
+    display:none;
+
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+
+    z-index:9999;
+}
+
+/* CONTENEDOR LOGIN + REGISTRO */
+
+.auth-box{
+
+    display:flex;
+    gap:20px;
+}
+
+/* CADA LADO */
+
+.auth-section{
+
+    flex:1;
+}
+
+/* TITULOS */
+
+.auth-section h3{
+
+    font-size:18px;
+    margin-bottom:10px;
+}
+
+/* INPUTS */
+
+.auth-section input{
+
+    width:100%;
+    padding:10px;
+
+    margin-bottom:10px;
+
+    border:1px solid #ddd;
+    border-radius:6px;
+}
+
+/* BOTON */
+
+.btn-login{
+
+    width:100%;
+    padding:10px;
+
+    background:#ff4d1c;
+
+    color:white;
+
+    border:none;
+
+    border-radius:6px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+/* LINK */
+
+.link{
+
+    font-size:12px;
+    color:#666;
+}
+
+.switch-text{
+
+    font-size:13px;
+    margin-top:10px;
+}
+
+.switch-text span{
+
+    color:#ff4d1c;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.mensaje-auth{
+
+    background:#fee2e2;
+
+    color:#991b1b;
+
+    padding:11px;
+
+    border-radius:8px;
+
+    font-size:13px;
+
+    margin:15px 0 12px 0;  /* 👈 ESTO ES LO IMPORTANTE */
+
+    text-align:center;
+
+    border:1px solid #fecaca;
+}
+
+#cabeceraComparacion{
+
+    margin-top:40px;
+}
+
+.motos-comparadas{
+
+    display:flex !important;
+
+    justify-content:center;
+
+    align-items:flex-start;
+
+    gap:40px;
+
+    margin-bottom:40px;
+}
+
+.moto-comparada{
+
+    flex:1;
+
+    max-width:400px;
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:25px;
+
+    text-align:center;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.moto-comparada img{
+
+    width:100%;
+
+    max-width:320px;
+
+    height:220px;
+
+    object-fit:contain;
+
+    display:block;
+
+    margin:auto;
+
+    margin-bottom:15px;
+}
+
+.moto-comparada h3{
+
+    margin-bottom:15px;
+
+    color:#111827;
+}
+
+.moto-comparada p{
+
+    margin:8px 0;
+
+    font-size:16px;
+}
+
+.vs-grande{
+
+    display:flex !important;
+
+    align-items:center;
+
+    justify-content:center;
+
+    min-width:80px;
+
+    font-size:50px;
+
+    font-weight:bold;
+
+    color:#ef4444;
+
+    margin-top:100px;
+}
+
+.tabla-comparacion{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    background:white;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.tabla-comparacion th{
+
+    background:#111827;
+
+    color:white;
+
+    padding:15px;
+}
+
+.tabla-comparacion td{
+
+    padding:15px;
+
+    border-bottom:1px solid #e5e7eb;
+
+    text-align:center;
+}
+
+.valor-mejor{
+
+    color:#16a34a;
+
+    font-weight:bold;
+}
+
+.valor-peor{
+
+    color:#dc2626;
+
+    font-weight:bold;
+}
+
+.comparador-selectores{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:40px;
+
+    margin:30px auto;
+
+
+
+}
+
+.modal-comparador-contenido h2{
+
+    text-align:center;
+}
+
+.subtitulo-comparador{
+
+    text-align:center;
+
+    color:#6b7280;
+
+    margin-bottom:30px;
+}
+
+.comparador-selectores > div{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+}
+
+.comparador-selectores label{
+
+    font-weight:600;
+
+    text-align:center;
+
+    color:#111827;
+}
+
+.comparador-selectores select{
+
+    width:220px;
+
+    padding:12px;
+
+    border:1px solid #d1d5db;
+
+    border-radius:12px;
+
+    background:white;
+
+    font-size:14px;
+}
+
+.vs{
+
+    font-size:40px;
+
+    font-weight:bold;
+
+    color:#ef4444;
+
+    margin-top:25px;
+}
+
+.btn-comparar-modal{
+
+    display:block;
+
+    margin:20px auto 40px auto;
+
+    padding:14px 35px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#ef4444;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.btn-comparar-modal:hover{
+
+    background:#dc2626;
+
+    transform:translateY(-2px);
+}
+
+
+/* ========================= */
+/* RESPONSIVE GLOBAL */
+/* AÑADIR AL FINAL */
+/* ========================= */
+
+@media (max-width: 768px){
+
+    /* NAVBAR */
+
+    .navbar{
+
+        padding:15px 20px;
+    }
+
+    .menu{
+
+        display:none;
+    }
+
+    /* HERO */
+
+    .hero{
+
+        padding:30px 20px;
+
+        text-align:center;
+
+        justify-content:center;
+    }
+
+    .contenido{
+
+        max-width:100%;
+    }
+
+    .contenido h1{
+
+        font-size:32px;
+    }
+
+    .detalle-botones{
+
+        flex-direction:column;
+    }
+
+    /* FOOTER */
+
+    .footer-container{
+
+        flex-direction:column;
+
+        text-align:center;
+    }
+
+    /* NOSOTROS */
+
+    .contenedor-nosotros{
+
+        grid-template-columns:1fr;
+    }
+
+    .texto-nosotros{
+
+        text-align:center;
+    }
+
+    .horarios{
+
+        margin-left:0;
+
+        text-align:center;
+    }
+
+    /* COMPRAR MOTOS */
+
+    .busqueda{
+
+        padding:25px 15px;
+    }
+
+    .filtros{
+
+        flex-direction:column;
+    }
+
+    .filtros select,
+    .filtros input,
+    .filtros button{
+
+        width:100%;
+    }
+
+    .motos{
+
+        grid-template-columns:1fr !important;
+    }
+
+    /* INICIO */
+
+    .inicio-motos{
+
+        padding:60px 20px;
+    }
+
+    .estadisticas{
+
+        padding:60px 20px;
+    }
+
+    .marcas{
+
+        padding:60px 20px;
+    }
+
+    .elegirnos{
+
+        padding:60px 20px;
+    }
+
+    /* LOGIN */
+
+    .login-box{
+
+        grid-template-columns:1fr;
+    }
+
+    .login-panel,
+    .registro-panel{
+
+        padding:25px;
+    }
+
+    /* CALCULADORA */
+
+    .calculadora{
+
+        padding:60px 20px;
+    }
+
+    .calculadora-contenido{
+
+        flex-direction:column;
+    }
+
+    .calculadora-texto h2{
+
+        font-size:34px;
+    }
+
+    /* COMPARADOR */
+
+    .comparador-selectores{
+
+        flex-direction:column;
+
+        gap:20px;
+    }
+
+    .comparador-selectores select{
+
+        width:100%;
+    }
+
+    .vs{
+
+        margin-top:0;
+    }
+
+    .motos-comparadas{
+
+        flex-direction:column;
+    }
+
+    .vs-grande{
+
+        margin-top:0;
+    }
+
+    #tablaComparacion{
+
+        overflow-x:auto;
+    }
+
+    .tabla-comparacion{
+
+        min-width:600px;
+    }
+
+    /* PANEL USUARIO */
+
+    .panel-admin{
+
+        width:95% !important;
+
+        right:2.5% !important;
+    }
+
+    /* HERO PREMIUM */
+
+    .hero-premium{
+
+        padding:25px;
+    }
+
+    .hero-premium-contenido h1{
+
+        font-size:42px;
+    }
+
+}
+
+
+@media (max-width:768px){
+
+    .servicios-hero{
+
+        padding:60px 15px 50px;
+    }
+
+    .servicios-hero h1{
+
+        font-size:32px;
+    }
+
+    .cards-servicios{
+
+        gap:15px;
+    }
+
+    .card{
+
+        width:100%;
+
+        max-width:320px;
+
+        margin:auto;
+    }
+
+    .card h3{
+
+        font-size:18px;
+    }
+
+    .card p{
+
+        font-size:14px;
+
+        line-height:1.5;
+    }
+
+    .btn-contacto{
+
+        width:100%;
+
+        max-width:320px;
+
+        margin-top:30px;
+
+        text-align:center;
+    }
+
+}
+
+
+
+
+@media (max-width:768px){
+
+    .navbar{
+
+        flex-direction:column;
+
+        gap:12px;
+
+        padding:15px;
+    }
+
+    .menu{
+
+        display:flex !important;
+
+        flex-wrap:wrap;
+
+        justify-content:center;
+
+        gap:12px;
+    }
+
+    .btn-menu{
+
+        display:block !important;
+
+        margin-top:10px;
+    }
+
+}
+
+@media (max-width:768px){
+
+    .panel-admin{
+
+        position:fixed !important;
+
+        top:70px !important;
+
+        left:10px !important;
+
+        right:10px !important;
+
+        width:auto !important;
+
+        max-width:none !important;
+
+        z-index:99999 !important;
+    }
+
+}
+
+
+.terminos-check{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin:12px 0 18px;
+
+    font-size:14px;
+
+    color:black;
+}
+
+.terminos-check span{
+
+    flex:1;
+}
+
+.terminos-check input{
+
+    width:18px;
+
+    height:18px;
+
+    flex-shrink:0;
+}
+
+.terminos-check a{
+
+    color:#ff4d1c;
+
+    text-decoration:none;
+}
+.contenedor-legal{
+
+    max-width:900px;
+
+    margin:60px auto;
+
+    padding:50px;
+
+    background:white;
+
+    border-radius:20px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+
+    color:#111827;
+
+    line-height:1.9;
+}
+
+.contenedor-legal h1{
+
+    font-size:48px;
+
+    margin-bottom:25px;
+}
+
+.contenedor-legal h2{
+
+    margin-top:40px;
+
+    margin-bottom:15px;
+
+    font-size:32px;
+}
+
+.contenedor-legal p{
+
+    margin-bottom:20px;
+
+    font-size:18px;
+}
+
+.contenedor-legal li{
+
+    margin-bottom:12px;
+
+    font-size:18px;
+}
+
+body{
+
+    background:#f3f4f6;
+}

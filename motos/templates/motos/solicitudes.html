@@ -1,0 +1,229 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Solicitudes</title>
+
+    <link rel="stylesheet" href="{% static 'motos/panel.css' %}">
+
+</head>
+
+<body>
+
+    <header class="topbar">
+
+        <div class="logo">
+            UsadasBello
+        </div>
+
+        <nav class="menu-top">
+
+           <nav class="menu-top">
+
+        <a href="/panel-motos/">
+        Motos
+    </a>
+
+    <a href="/usuarios/">
+        Usuarios
+    </a>
+
+    <a href="/solicitudes/">
+        Solicitudes
+    </a>
+
+    <a href="/panel/">
+        Dashboard
+    </a>
+
+    <a href="/rendimiento/">
+        Rendimiento
+    </a>
+
+</nav>
+
+        </nav>
+
+        <div class="topbar-actions">
+
+    <a href="/logout/" class="btn-salir">
+        Salir
+    </a>
+
+</div>
+
+    </header>
+
+    <main class="contenido">
+
+        <section class="panel-principal">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h1>
+                        Solicitudes de venta
+                    </h1>
+
+                    <p>
+                        Solicitudes enviadas por usuarios.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="tabla-contenedor">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Imagen</th>
+
+                            <th>Marca</th>
+
+                            <th>Modelo</th>
+
+                            <th>Año</th>
+
+                            <th>WhatsApp</th>
+
+                            <th>Kilometraje</th>
+
+                            <th>Estado</th>
+
+                            <th>Acciones</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        {% for solicitud in solicitudes %}
+
+                        <tr>
+
+                            <td>
+
+                                <img src="{{ solicitud.imagen.url }}">
+
+                            </td>
+
+                            <td>
+
+                                {{ solicitud.marca }}
+
+                            </td>
+
+                            <td>
+
+                                {{ solicitud.modelo }}
+
+                            </td>
+
+                            <td>
+
+                                {{ solicitud.año }}
+
+                            </td>
+
+                            <td>
+
+                                {{ solicitud.whatsapp }}
+
+                            </td>
+
+                            <td>
+
+                                {{ solicitud.kilometraje }} km
+
+                            </td>
+                            <td>
+
+    <span class="estado {{ solicitud.estado }}">
+        {{ solicitud.estado }}
+    </span>
+
+</td>
+<td class="acciones">
+
+    <a 
+    href="/aceptar-solicitud/{{ solicitud.id }}/"
+    class="editar">
+        Aceptar
+    </a>
+
+    <a 
+    href="/rechazar-solicitud/{{ solicitud.id }}/"
+    class="eliminar">
+        Rechazar
+    </a>
+
+</td>
+
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+                <div class="paginacion">
+
+    {% if solicitudes.has_previous %}
+
+        <a href="?page=1">
+            ⏮ Primera
+        </a>
+
+        <a href="?page={{ solicitudes.previous_page_number }}">
+            ◀ Anterior
+        </a>
+
+    {% endif %}
+
+    <span>
+
+        Página {{ solicitudes.number }}
+        de
+        {{ solicitudes.paginator.num_pages }}
+
+    </span>
+
+    {% if solicitudes.has_next %}
+
+        <a href="?page={{ solicitudes.next_page_number }}">
+            Siguiente ▶
+        </a>
+
+        <a href="?page={{ solicitudes.paginator.num_pages }}">
+            Última ⏭
+        </a>
+
+    {% endif %}
+
+</div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

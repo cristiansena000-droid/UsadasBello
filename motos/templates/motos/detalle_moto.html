@@ -1,0 +1,338 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {{ moto.marca }} {{ moto.modelo }}
+    </title>
+
+    <link rel="stylesheet"
+    href="{% static 'motos/detalle.css' %}">
+
+    <link rel="stylesheet"
+    href="{% static 'motos/style.css' %}">
+
+    <style>
+
+.menu{
+    display:none;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<header>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            UsadasBello
+        </div>
+
+        <ul class="menu">
+
+            <li><a href="/index/">Inicio</a></li>
+
+            <li><a href="/comprar/">Comprar</a></li>
+
+            <li><a href="/vender/">Vender</a></li>
+
+            <li><a href="/nosotros/">Nosotros</a></li>
+
+        </ul>
+
+    </nav>
+
+</header>
+
+<!-- DETALLE -->
+
+<section class="detalle">
+
+    <!-- IMAGEN -->
+
+    <div class="detalle-imagen">
+
+        <div class="contenedor-imagen">
+
+            <button
+                class="flecha izquierda"
+                onclick="anteriorImagen()">
+                ‹
+            </button>
+
+            <img
+                id="imagen-principal"
+                src="{{ moto.imagen.url }}"
+                onclick="abrirZoom(this)"
+            >
+
+            <button
+                class="flecha derecha"
+                onclick="siguienteImagen()">
+                ›
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- INFO -->
+
+    <div class="detalle-info">
+
+        <span class="categoria">
+            {{ moto.marca }}
+        </span>
+
+        <h1 class="titulo-moto">
+            {{ moto.linea }}
+        </h1>
+
+        <div class="modelo-anio">
+            Modelo {{ moto.modelo }}
+        </div>
+
+       
+
+        <h2 class="precio-moto">
+            ${{ moto.precio }}
+        </h2>
+
+        <p class="descripcion">
+            {{ moto.descripcion }}
+        </p>
+
+        <div class="detalle-botones">
+
+            <a
+
+href="https://wa.me/573122981888?text=
+
+Hola,%20vi%20esta%20moto%20en%20UsadasBello:%0A%0A
+
+%20{{ moto.marca }}%20{{ moto.linea }}%0A
+
+%20Modelo:%20{{ moto.modelo }}%0A
+
+%20Precio:%20${{ moto.precio }}%0A
+
+%20Placa:%20{{ moto.placa }}%0A%0A
+
+Me%20interesaría%20recibir%20más%20información.%0A%0A
+
+%20Link:%20http://127.0.0.1:8000/moto/{{ moto.id }}/
+
+"
+
+target="_blank"
+
+class="btn-whatsapp">
+
+    Solicitar asesoría
+
+</a>
+
+            <a
+                href="/comprar/"
+                class="btn-volver">
+
+                Volver
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<div class="specs">
+
+    <div class="spec-card">
+
+        <span>Cilindraje</span>
+
+        <h3>
+            {{ moto.cilindraje }}cc
+        </h3>
+
+    </div>
+
+    <div class="spec-card">
+
+        <span>Kilometraje</span>
+
+        <h3>
+            {{ moto.kilometraje }} km
+        </h3>
+
+    </div>
+
+    <div class="spec-card">
+
+        <span>Placa</span>
+
+        <h3>
+            {{ moto.placa }}
+        </h3>
+
+    </div>
+
+    <div class="spec-card">
+
+        <span>SOAT</span>
+
+        <h3>
+            {{ moto.soat }}
+        </h3>
+
+    </div>
+
+    <div class="spec-card">
+
+        <span>Tecnomecánica</span>
+
+        <h3>
+            {{ moto.tecnomecanica }}
+        </h3>
+
+    </div>
+
+    <div class="spec-card">
+
+        <span>Tránsito</span>
+
+        <h3>
+            {{ moto.transito }}
+        </h3>
+
+    </div>
+
+</div>
+
+<!-- DESCRIPCION -->
+
+<br>
+
+<section class="descripcion-larga">
+
+    <div class="descripcion-container">
+
+        <h2>
+            Información detallada
+        </h2>
+
+        <p>
+            {{ moto.descripcion_larga }}
+        </p>
+
+    </div>
+
+</section>
+
+<!-- MODAL ZOOM -->
+
+<div id="modalZoom" class="modal-zoom">
+
+    <span class="cerrar-zoom">
+        ×
+    </span>
+
+    <img id="imagenZoom">
+
+</div>
+
+<!-- SCRIPT -->
+
+<script>
+
+const imagenes = [
+
+    "{{ moto.imagen.url }}",
+
+    {% for img in moto.imagenes.all %}
+
+        "{{ img.imagen.url }}",
+
+    {% endfor %}
+
+];
+
+let imagenActual = 0;
+
+function actualizarImagen(){
+
+    document.getElementById(
+        "imagen-principal"
+    ).src = imagenes[imagenActual];
+
+}
+
+function siguienteImagen(){
+
+    imagenActual++;
+
+    if(imagenActual >= imagenes.length){
+
+        imagenActual = 0;
+
+    }
+
+    actualizarImagen();
+
+}
+
+function anteriorImagen(){
+
+    imagenActual--;
+
+    if(imagenActual < 0){
+
+        imagenActual = imagenes.length - 1;
+
+    }
+
+    actualizarImagen();
+
+}
+
+function abrirZoom(img){
+
+    document.getElementById(
+        "modalZoom"
+    ).style.display = "flex";
+
+    document.getElementById(
+        "imagenZoom"
+    ).src = img.src;
+
+}
+
+document.querySelector(".cerrar-zoom")
+.addEventListener("click", () => {
+
+    document.getElementById(
+        "modalZoom"
+    ).style.display = "none";
+
+});
+
+</script>
+
+</body>
+
+</html>

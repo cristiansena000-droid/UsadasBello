@@ -1,0 +1,321 @@
+{% extends 'motos/base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- HERO -->
+<section class="hero-premium">
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-premium-contenido">
+
+        <p class="mini-texto">
+            RAPIDO SEGURO Y SIN COMPROMISOS 
+        </p>
+
+        <h1>
+            COMPRA&nbsp;VENTA<br>
+            USADAS&nbsp;BELLO
+        </h1>
+
+        <a href="/nosotros/" class="hero-btn">
+            Más información →
+        </a>
+
+    </div>
+
+</section>
+
+<!-- ESTADISTICAS -->
+<section class="estadisticas">
+
+    <div class="estadistica">
+        <h2>+350</h2>
+        <p>Motos vendidas</p>
+    </div>
+
+    <div class="estadistica">
+        <h2>+120</h2>
+        <p>Clientes felices</p>
+    </div>
+
+    <div class="estadistica">
+        <h2>+8</h2>
+        <p>Años de experiencia</p>
+    </div>
+
+</section>
+
+<!-- MARCAS -->
+<section class="marcas">
+
+    <div class="titulo-seccion">
+        <h2>Marcas disponibles</h2>
+    </div>
+
+    <div class="marcas-grid">
+        <div class="marca-item">Yamaha</div>
+        <div class="marca-item">Honda</div>
+        <div class="marca-item">Suzuki</div>
+        <div class="marca-item">KTM</div>
+        <div class="marca-item">AKT</div>
+        <div class="marca-item">Bajaj</div>
+    </div>
+
+</section>
+
+<!-- CALCULADORA -->
+<section class="calculadora">
+
+    <div class="calculadora-contenido">
+
+        <div class="calculadora-texto">
+
+            <p class="mini-calculo">
+                FINANCIA TU MOTO
+            </p>
+
+            <h2>
+                Calcula tu crédito fácilmente
+            </h2>
+
+            <p>
+                Simula rápidamente cuánto pagarías
+                por tu próxima motocicleta.
+            </p>
+
+        </div>
+
+        <div class="calculadora-box">
+
+            <div class="campo-calculo">
+                <label>Valor de la moto</label>
+                <input type="number" id="precioMoto" placeholder="Ej: 12000000">
+            </div>
+
+            <div class="campo-calculo">
+                <label>Cuota inicial</label>
+                <input type="number" id="cuotaInicial" placeholder="Ej: 3000000">
+            </div>
+
+            <div class="campo-calculo">
+                <label>Meses</label>
+                <select id="meses">
+                    <option value="12">12 meses</option>
+                    <option value="24">24 meses</option>
+                    <option value="36">36 meses</option>
+                </select>
+            </div>
+
+            <button class="btn-calcular" onclick="calcularCredito()">
+                Calcular crédito
+            </button>
+
+            <div class="resultado-calculo">
+                <h3 id="resultadoCredito">$0</h3>
+                <p>Valor aproximado por cuota mensual</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- MOTOS DESTACADAS -->
+<section class="inicio-motos">
+
+    <div class="titulo-seccion">
+        <h2>Motos destacadas</h2>
+        <p>Las más vistas por nuestros clientes</p>
+    </div>
+
+    <div class="inicio-grid">
+
+        <div class="inicio-card">
+            <img src="{% static 'motos/img/moto1.jpg' %}">
+            <div class="inicio-info">
+                <h3>Akt ak200 ds</h3>
+                <p>$8.600.000</p>
+                <a href="/comprar/" class="inicio-btn">Ver moto</a>
+            </div>
+        </div>
+
+        <div class="inicio-card">
+            <img src="{% static 'motos/img/moto2.jpg' %}">
+            <div class="inicio-info">
+                <h3>Honda xr150</h3>
+                <p>$8.200.000</p>
+                <a href="/comprar/" class="inicio-btn">Ver moto</a>
+            </div>
+        </div>
+
+        <div class="inicio-card">
+            <img src="{% static 'motos/img/moto3.jpg' %}">
+            <div class="inicio-info">
+                <h3>Pulsar NS200</h3>
+                <p>$7.000.000</p>
+                <a href="/comprar/" class="inicio-btn">Ver moto</a>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- POR QUE ELEGIRNOS -->
+<section class="elegirnos">
+
+    <div class="titulo-seccion">
+        <h2>¿Por qué elegirnos?</h2>
+    </div>
+
+    <div class="elegir-grid">
+
+        <div class="elegir-card">
+            <h3>Compra segura</h3>
+            <p>Revisamos cada moto antes de publicarla.</p>
+        </div>
+
+        <div class="elegir-card">
+            <h3>Atención rápida</h3>
+            <p>Respondemos solicitudes en minutos.</p>
+        </div>
+
+        <div class="elegir-card">
+            <h3>Precios reales</h3>
+            <p>Sin costos ocultos ni letras pequeñas.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <div class="footer-col">
+            <h3>Compra venta usadas Bello</h3>
+            <p>📍 Cl. 49 #46-32, Prado,<br>Bello, Antioquia</p>
+            <p>✉️ usadasbello@gmail.com</p>
+            <p>📞 +57 312 298 1888</p>
+        </div>
+
+        <div class="footer-col">
+            <h3>Enlaces rápidos</h3>
+            <a href="#">Inicio</a>
+            <a href="#">Comprar moto</a>
+            <a href="#">Vender mi moto</a>
+            <a href="#">Servicios</a>
+            <a href="#">Nosotros</a>
+        </div>
+
+        <div class="footer-col">
+            <h3>Redes</h3>
+            <a href="#">Instagram</a>
+            <a href="#">Facebook</a>
+            <a href="#">WhatsApp</a>
+        </div>
+
+    </div>
+
+</footer>
+
+<script>
+
+function calcularCredito(){
+
+    let precio = parseFloat(
+        document.getElementById(
+            "precioMoto"
+        ).value
+    );
+
+    let inicial = parseFloat(
+        document.getElementById(
+            "cuotaInicial"
+        ).value
+    );
+
+    let meses = parseInt(
+        document.getElementById(
+            "meses"
+        ).value
+    );
+
+    if(
+        isNaN(precio) ||
+        isNaN(inicial) ||
+        isNaN(meses)
+    ){
+
+        alert(
+            "Completa todos los campos"
+        );
+
+        return;
+    }
+
+    let financiado = precio - inicial;
+
+    if(financiado <= 0){
+
+        alert(
+            "La cuota inicial debe ser menor al valor de la moto"
+        );
+
+        return;
+    }
+    const interesAnual = 10;
+    
+    
+    const interesMensual =
+        (interesAnual / 100) / 12;
+
+    const cuota =
+
+        financiado *
+
+        (
+
+            interesMensual *
+
+            Math.pow(
+                1 + interesMensual,
+                meses
+            )
+
+        )
+
+        /
+
+        (
+
+            Math.pow(
+                1 + interesMensual,
+                meses
+            )
+
+            - 1
+
+        );
+
+    document.getElementById(
+        "resultadoCredito"
+    ).innerText =
+
+    "$" +
+
+    Math.round(
+        cuota
+    ).toLocaleString(
+        "es-CO"
+    );
+
+}
+
+</script>
+
+{% endblock %}

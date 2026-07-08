@@ -1,0 +1,286 @@
+/* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#070b11;
+    color:white;
+}
+
+/* NAVBAR */
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 60px;
+    background:rgba(0,0,0,0.7);
+    backdrop-filter: blur(10px);
+    position:sticky;
+    top:0;
+    z-index:1000;
+    border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+    color:white;
+}
+
+.navbar ul{
+    list-style:none;
+}
+
+.navbar a{
+    text-decoration:none;
+    color:#ccc;
+    transition:0.3s;
+    font-size:15px;
+}
+
+.navbar a:hover{
+    color:#ffd000;
+}
+
+/* HERO */
+.hero-gps{
+
+    display:flex;
+
+    align-items:center;
+
+    padding:60px 40px;
+
+}
+
+.container{
+
+    max-width:1200px;
+
+    width:100%;
+
+    margin:0 auto;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:60px;
+
+}
+
+/* TEXTO */
+.info{
+    flex:1;
+    min-width:650px;
+}
+
+.info h1{
+    font-size:64px;
+    line-height:1.15;
+}
+.info span{
+    color:#ffd000;
+}
+
+.info p{
+    color:#b8b8b8;
+    font-size:20px;
+    line-height:1.7;
+    max-width:600px;
+    margin-bottom:40px;
+}
+
+/* BOTÓN */
+.btn{
+    display:inline-block;
+    background:#22c55e;
+    color:white;
+    padding:18px 38px;
+    border-radius:14px;
+    text-decoration:none;
+    font-weight:bold;
+    font-size:17px;
+    transition:0.3s;
+    box-shadow:0 10px 30px rgba(34,197,94,0.3);
+}
+
+.btn:hover{
+    transform:translateY(-5px);
+    background:#16a34a;
+}
+
+/* IMAGEN */
+.imagen{
+    flex:none;
+    display:flex;
+    justify-content:center;
+}
+
+.imagen img{
+
+    width:650px !important;
+
+    height:auto !important;
+
+    max-width:none !important;
+
+   
+
+}
+
+/* SECCIONES */
+section{
+    max-width:1200px;
+    margin:120px auto;
+    padding:0 30px;
+}
+
+/* TITULOS */
+h2{
+    font-size:42px;
+    margin-bottom:35px;
+}
+
+/* BENEFICIOS */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
+    gap:25px;
+}
+
+.grid div{
+    background:#111827;
+    padding:35px;
+    border-radius:20px;
+    font-size:18px;
+    transition:0.3s;
+    border:1px solid rgba(255,255,255,0.05);
+}
+
+.grid div:hover{
+    transform:translateY(-8px);
+    background:#172033;
+}
+
+/* LISTAS */
+ul, ol{
+    padding-left:25px;
+}
+
+ul li,
+ol li{
+    margin-bottom:15px;
+    color:#d6d6d6;
+    font-size:18px;
+}
+
+/* PRECIO */
+.precio{
+    text-align:center;
+    margin-bottom:120px;
+}
+
+.precio h2{
+    font-size:64px;
+    color:#ffd000;
+    margin-bottom:30px;
+}
+
+/* RESPONSIVE */
+@media(max-width:950px){
+
+    .container{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .info h1{
+        font-size:48px;
+    }
+
+    .info p{
+        max-width:100%;
+    }
+
+    .imagen img{
+        height:auto;
+    }
+
+    .navbar{
+        padding:20px;
+    }
+
+    .hero-gps{
+        padding:40px 20px;
+    }
+
+}
+
+@media (max-width:768px){
+
+    .hero-gps{
+
+        min-height:auto;
+
+        padding:30px 15px;
+    }
+
+    .container{
+
+        flex-direction:column;
+
+        gap:30px;
+
+        text-align:center;
+    }
+
+    .info{
+
+        min-width:0;
+
+        width:100%;
+    }
+
+    .info h1{
+
+        font-size:42px;
+
+        line-height:1.1;
+    }
+
+    .info p{
+
+        font-size:18px;
+
+        max-width:100%;
+    }
+
+    .imagen{
+
+        width:100%;
+    }
+
+    .imagen img{
+
+        width:100% !important;
+
+        max-width:500px !important;
+
+        height:auto !important;
+    }
+
+    .btn{
+
+        width:100%;
+
+        max-width:320px;
+    }
+
+}

@@ -1,0 +1,263 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Gestión de motos
+    </title>
+
+    <link rel="stylesheet"
+    href="{% static 'motos/panel.css' %}">
+
+</head>
+
+<body>
+
+    <!-- TOPBAR -->
+
+    <header class="topbar">
+
+        <div class="logo">
+            UsadasBello
+        </div>
+
+    <nav class="menu-top">
+
+    <a href="/panel-motos/">
+        Motos
+    </a>
+
+    <a href="/usuarios/">
+        Usuarios
+    </a>
+
+    <a href="/solicitudes/">
+        Solicitudes
+    </a>
+
+    <a href="/panel/">
+        Dashboard
+    </a>
+
+    <a href="/rendimiento/">
+        Rendimiento
+    </a>
+
+</nav>  
+
+            
+        </nav>
+
+<div class="topbar-actions">
+
+    <a href="/logout/" class="btn-salir">
+        Salir
+    </a>
+
+</div>
+
+    </header>
+
+    <!-- CONTENIDO -->
+
+    <main class="contenido">
+
+        <section class="panel-principal">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h1>
+                        Gestión de motos
+                    </h1>
+
+                    <p>
+                        Administra las motos
+                        publicadas en el sistema.
+                    </p>
+
+                </div>
+
+                <a
+                    href="/agregar-moto/"
+                    class="btn-agregar"
+                >
+
+                    Agregar moto
+
+                </a>
+
+
+            </div>
+
+            <!-- TABLA -->
+
+            <div class="tabla-contenedor">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Imagen</th>
+
+                            <th>Nombre</th>
+
+                            <th>Marca</th>
+
+                            <th>Placa</th>
+
+                            <th>Precio</th>
+
+                            <th>Vistas</th>
+
+                            <th>Estado</th>
+
+                            <th>Acciones</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        {% for moto in motos %}
+
+                        <tr>
+
+                            <td>
+
+                                <img
+                                    src="{{ moto.imagen.url }}"
+                                >
+
+                            </td>
+
+                            <td>
+
+                                {{ moto.linea|default:moto.modelo }}
+
+                            </td>
+
+                            <td>
+
+                                {{ moto.marca }}
+
+                            </td>
+
+                            <td>
+
+                                {{ moto.placa }}
+
+                            </td>
+
+                            <td>
+
+                                ${{ moto.precio }}
+
+                            </td>
+
+                            <td>
+
+                                {{ moto.vistas }}
+
+                            </td>
+
+                            <td>
+
+                                <span
+                                    class="estado {{ moto.estado }}"
+                                >
+
+                                    {{ moto.estado }}
+
+                                </span>
+
+                            </td>
+
+                            <td class="acciones">
+
+                                <a
+                                    href="/editar-moto/{{ moto.id }}/"
+                                    class="editar"
+                                >
+
+                                    Editar
+
+                                </a>
+
+                                <a
+                                    href="/eliminar-moto/{{ moto.id }}/"
+                                    class="eliminar"
+                                >
+
+                                    Eliminar
+
+                                </a>
+
+                            </td>
+
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+                <div class="paginacion">
+
+    {% if motos.has_previous %}
+
+        <a href="?page=1">
+            ⏮ Primera
+        </a>
+
+        <a href="?page={{ motos.previous_page_number }}">
+            ◀ Anterior
+        </a>
+
+    {% endif %}
+
+    <span>
+
+        Página {{ motos.number }}
+        de
+        {{ motos.paginator.num_pages }}
+
+    </span>
+
+    {% if motos.has_next %}
+
+        <a href="?page={{ motos.next_page_number }}">
+            Siguiente ▶
+        </a>
+
+        <a href="?page={{ motos.paginator.num_pages }}">
+            Última ⏭
+        </a>
+
+    {% endif %}
+
+</div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>
+```

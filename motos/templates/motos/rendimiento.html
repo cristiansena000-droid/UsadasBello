@@ -1,0 +1,444 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+
+<meta charset="UTF-8">
+
+<title>
+    Rendimiento
+</title>
+
+<link rel="stylesheet"
+href="{% static 'motos/panel.css' %}">
+
+
+</head>
+
+<body>
+
+<header class="topbar">
+
+
+<div class="logo">
+
+    UsadasBello
+
+</div>
+
+<nav class="menu-top">
+
+    <a href="/panel-motos/">
+        Motos
+    </a>
+
+    <a href="/usuarios/">
+        Usuarios
+    </a>
+
+    <a href="/solicitudes/">
+        Solicitudes
+    </a>
+
+    <a href="/panel/">
+        Dashboard
+    </a>
+
+    <a href="/rendimiento/">
+        Rendimiento
+    </a>
+
+</nav>
+
+<div class="topbar-actions">
+
+    <a href="/logout/" class="btn-salir">
+        Salir
+    </a>
+
+</div>  
+
+
+</header>
+
+<main class="contenido">
+
+
+<!-- CARDS -->
+
+<section class="cards">
+
+    <div class="card">
+
+        <span class="titulo-card">
+            CPU
+        </span>
+
+        <h2 id="cpu">
+            0%
+        </h2>
+
+        <p>
+            Uso actual
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <span class="titulo-card">
+            RAM
+        </span>
+
+        <h2 id="ram">
+            0%
+        </h2>
+
+        <p id="ram-info">
+            Cargando...
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <span class="titulo-card">
+            DISCO
+        </span>
+
+        <h2 id="disco">
+            0%
+        </h2>
+
+        <p id="disco-info">
+            Cargando...
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <span class="titulo-card">
+            SISTEMA
+        </span>
+
+        <h2>
+            {{ sistema }}
+        </h2>
+
+        <p>
+            {{ version }}
+        </p>
+
+    </div>
+
+</section>
+
+<!-- GRAFICOS -->
+
+<section class="dashboard">
+
+    <div class="dashboard-box">
+
+        <h2>
+            CPU en tiempo real
+        </h2>
+
+        <canvas id="graficaRendimiento"></canvas>
+
+    </div>
+
+    <div class="dashboard-box">
+
+        <h2>
+            Estado actual
+        </h2>
+
+        <canvas id="graficaEstado"></canvas>
+
+    </div>
+
+</section>
+
+<!-- INFO SISTEMA -->
+
+<section class="premium-grid">
+
+    <div class="premium-box">
+
+        <h2>
+            Información del sistema
+        </h2>
+
+        <div class="metrica-item">
+
+            <span>
+                Sistema
+            </span>
+
+            <strong>
+                {{ sistema }}
+            </strong>
+
+        </div>
+
+        <div class="metrica-item">
+
+            <span>
+                Versión
+            </span>
+
+            <strong>
+                {{ version }}
+            </strong>
+
+        </div>
+
+        <div class="metrica-item">
+
+            <span>
+                Procesador
+            </span>
+
+            <strong>
+                {{ cpu_nombre }}
+            </strong>
+
+        </div>
+
+    </div>
+
+</section>
+```
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+const historialCPU = [];
+
+const graficaCPU = new Chart(
+
+    document.getElementById(
+        "graficaRendimiento"
+    ),
+
+    {
+
+        type:'line',
+
+        data:{
+
+            labels:[],
+
+            datasets:[{
+
+                label:'CPU %',
+
+                data:[],
+
+                borderColor:'#ff5a1f',
+
+                borderWidth:3,
+
+                fill:false,
+
+                tension:0.3
+
+            }]
+
+        },
+
+        options:{
+
+            responsive:true,
+
+            animation:false,
+
+            scales:{
+
+                y:{
+
+                    min:0,
+
+                    max:100
+
+                }
+
+            }
+
+        }
+
+    }
+
+);
+
+const graficaEstado = new Chart(
+
+    document.getElementById(
+        "graficaEstado"
+    ),
+
+    {
+
+        type:'doughnut',
+
+        data:{
+
+            labels:[
+
+                'CPU',
+
+                'RAM',
+
+                'DISCO'
+
+            ],
+
+            datasets:[{
+
+                data:[0,0,0]
+
+            }]
+
+        }
+
+    }
+
+);
+
+function actualizar(){
+
+    fetch(
+
+        "/api-rendimiento/"
+
+    )
+
+    .then(
+
+        response => response.json()
+
+    )
+
+    .then(data => {
+
+        document.getElementById(
+
+            "cpu"
+
+        ).innerText =
+
+        data.cpu + "%";
+
+        document.getElementById(
+
+            "ram"
+
+        ).innerText =
+
+        data.ram + "%";
+
+        document.getElementById(
+
+            "disco"
+
+        ).innerText =
+
+        data.disco + "%";
+
+        document.getElementById(
+
+            "ram-info"
+
+        ).innerText =
+
+        data.ram_usada +
+
+        " GB / " +
+
+        data.ram_total +
+
+        " GB";
+
+        document.getElementById(
+
+            "disco-info"
+
+        ).innerText =
+
+        data.disco_usado +
+
+        " GB / " +
+
+        data.disco_total +
+
+        " GB";
+
+        historialCPU.push(
+
+            data.cpu
+
+        );
+
+        if(
+
+            historialCPU.length > 30
+
+        ){
+
+            historialCPU.shift();
+
+        }
+
+        graficaCPU.data.labels =
+
+        historialCPU.map(
+
+            (_, i) => i
+
+        );
+
+        graficaCPU.data.datasets[0].data =
+
+        historialCPU;
+
+        graficaCPU.update();
+
+        graficaEstado.data.datasets[0].data = [
+
+            data.cpu,
+
+            data.ram,
+
+            data.disco
+
+        ];
+
+        graficaEstado.update();
+
+    });
+
+}
+
+actualizar();
+
+setInterval(
+
+    actualizar,
+
+    2000
+
+);
+
+</script>
+
+</body>
+
+</html>

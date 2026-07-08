@@ -1,0 +1,142 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+```
+<meta charset="UTF-8">
+
+<title>
+    Interés crédito
+</title>
+
+<link rel="stylesheet"
+href="{% static 'motos/panel.css' %}">
+```
+
+</head>
+
+<body>
+
+<header class="topbar">
+
+```
+<div class="logo">
+    UsadasBello
+</div>
+
+<nav class="menu-top">
+
+    <a href="/panel-motos/">
+        Motos
+    </a>
+
+    <a href="/usuarios/">
+        Usuarios
+    </a>
+
+    <a href="/solicitudes/">
+        Solicitudes
+    </a>
+
+    <a href="/panel/">
+        Dashboard
+    </a>
+
+    <a href="/rendimiento/">
+        Rendimiento
+    </a>
+
+</nav>
+
+<a href="/logout/" class="btn-salir">
+    Salir
+</a>
+```
+
+</header>
+
+<main class="contenido">
+
+```
+<section class="panel-principal">
+
+    <div class="panel-header">
+
+        <div>
+
+            <h1>
+                Interés de crédito
+            </h1>
+
+            <p>
+                Configura el interés anual usado por la calculadora.
+            </p>
+
+        </div>
+
+    </div>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <div
+            style="
+            margin-bottom:25px;
+            "
+        >
+
+            <label>
+
+                Interés anual (%)
+
+            </label>
+
+            <input
+
+                type="number"
+
+                step="0.1"
+
+                name="interes"
+
+                value="{{ config.interes_credito }}"
+
+                style="
+                width:100%;
+                padding:14px;
+                margin-top:10px;
+                border:1px solid #d1d5db;
+                border-radius:10px;
+                "
+
+            >
+
+        </div>
+
+        <button
+
+            type="submit"
+
+            class="btn-agregar"
+
+        >
+
+            Guardar
+
+        </button>
+
+    </form>
+
+</section>
+```
+
+</main>
+
+</body>
+
+</html>

@@ -1,0 +1,230 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+
+<meta charset="UTF-8">
+
+<title>
+    Usuarios
+</title>
+
+<link rel="stylesheet"
+href="{% static 'motos/panel.css' %}">
+
+
+</head>
+
+<body>
+
+<header class="topbar">
+
+
+<div class="logo">
+
+    UsadasBello
+
+</div>
+
+<nav class="menu-top">
+
+    <a href="/panel-motos/">
+        Motos
+    </a>
+
+    <a href="/usuarios/">
+        Usuarios
+    </a>
+
+    <a href="/solicitudes/">
+        Solicitudes
+    </a>
+
+    <a href="/panel/">
+        Dashboard
+    </a>
+
+    <a href="/rendimiento/">
+        Rendimiento
+    </a>
+
+</nav>
+
+<div class="topbar-actions">
+
+    <a href="/logout/" class="btn-salir">
+        Salir
+    </a>
+
+</div>
+
+</header>
+
+<main class="contenido">
+
+
+<section class="panel-principal">
+
+    <div class="panel-header">
+
+        <div>
+
+            <h1>
+                Usuarios
+            </h1>
+
+            <p>
+                Usuarios registrados
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="tabla-contenedor">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Foto</th>
+
+                    <th>Usuario</th>
+
+                    <th>Correo</th>
+
+                    <th>Teléfono</th>
+
+                    <th>Fecha</th>
+
+                    <th>Acciones</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for usuario in usuarios %}
+
+                <tr>
+
+                    <td>
+
+                        {% if usuario.perfilusuario.foto %}
+
+                            <img
+                                src="{{ usuario.perfilusuario.foto.url }}"
+                            >
+
+                        {% endif %}
+
+                    </td>
+
+                    <td>
+
+                        {{ usuario.username }}
+
+                    </td>
+
+                    <td>
+
+                        {{ usuario.email }}
+
+                    </td>
+
+                    <td>
+
+                        {{ usuario.perfilusuario.telefono }}
+
+                    </td>
+
+                    <td>
+
+                        {{ usuario.date_joined|date:"d/m/Y" }}
+
+                    </td>
+
+                    <td class="acciones">
+
+                        <a
+                            href="/editar-usuario/{{ usuario.id }}/"
+                            class="editar"
+                        >
+
+                            Editar
+
+                        </a>
+
+                        <a
+                            href="/eliminar-usuario/{{ usuario.id }}/"
+                            class="eliminar"
+                            onclick="return confirm('¿Eliminar usuario?')"
+                        >
+
+                            Eliminar
+
+                        </a>
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+        <div class="paginacion">
+
+    {% if usuarios.has_previous %}
+
+        <a href="?page=1">
+            ⏮ Primera
+        </a>
+
+        <a href="?page={{ usuarios.previous_page_number }}">
+            ◀ Anterior
+        </a>
+
+    {% endif %}
+
+    <span>
+
+        Página {{ usuarios.number }}
+        de
+        {{ usuarios.paginator.num_pages }}
+
+    </span>
+
+    {% if usuarios.has_next %}
+
+        <a href="?page={{ usuarios.next_page_number }}">
+            Siguiente ▶
+        </a>
+
+        <a href="?page={{ usuarios.paginator.num_pages }}">
+            Última ⏭
+        </a>
+
+    {% endif %}
+
+</div>
+
+    </div>
+
+</section>
+```
+
+</main>
+
+</body>
+
+</html>

@@ -1,0 +1,499 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Agregar moto</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            background:#f3f4f6;
+            color:#111827;
+        }
+
+        /* TOPBAR */
+
+        .topbar{
+
+            width:100%;
+
+            height:80px;
+
+            background:white;
+
+            display:flex;
+
+            justify-content:space-between;
+
+            align-items:center;
+
+            padding:0 50px;
+
+            border-bottom:1px solid #e5e7eb;
+        }
+
+        .logo{
+
+            font-size:24px;
+
+            font-weight:bold;
+        }
+
+        .btn-volver{
+
+            background:#f3f4f6;
+
+            padding:12px 20px;
+
+            border-radius:10px;
+
+            text-decoration:none;
+
+            color:#111827;
+
+            border:1px solid #d1d5db;
+        }
+
+        /* CONTENIDO */
+
+        .contenido{
+
+            width:100%;
+
+            display:flex;
+
+            justify-content:center;
+
+            padding:50px 20px;
+        }
+
+        /* PANEL */
+
+        .panel{
+
+            width:100%;
+
+            max-width:900px;
+
+            background:white;
+
+            border-radius:22px;
+
+            padding:40px;
+
+            border:1px solid #e5e7eb;
+        }
+
+        .panel h1{
+
+            font-size:32px;
+
+            margin-bottom:10px;
+        }
+
+        .panel p{
+
+            color:#6b7280;
+
+            margin-bottom:35px;
+        }
+
+        /* FORMULARIO */
+
+        .formulario{
+
+            display:grid;
+
+            grid-template-columns:1fr 1fr;
+
+            gap:25px;
+        }
+
+        .grupo{
+
+            display:flex;
+
+            flex-direction:column;
+        }
+
+        .grupo label{
+
+            margin-bottom:8px;
+
+            font-size:14px;
+
+            font-weight:bold;
+        }
+
+        .grupo input,
+        .grupo textarea,
+        .grupo select{
+
+            padding:14px;
+
+            border-radius:12px;
+
+            border:1px solid #d1d5db;
+
+            font-size:15px;
+
+            outline:none;
+        }
+
+        .grupo textarea{
+
+            resize:none;
+
+            height:130px;
+        }
+
+        .grupo-full{
+
+            grid-column:1/3;
+        }
+
+        /* BOTON */
+
+        .acciones{
+
+            grid-column:1/3;
+
+            display:flex;
+
+            justify-content:flex-end;
+
+            margin-top:10px;
+        }
+
+        .btn-guardar{
+
+            background:#111827;
+
+            color:white;
+
+            border:none;
+
+            padding:15px 28px;
+
+            border-radius:12px;
+
+            cursor:pointer;
+
+            font-size:15px;
+
+            transition:0.3s;
+        }
+
+        .btn-guardar:hover{
+
+            background:#000;
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width:800px){
+
+            .formulario{
+
+                grid-template-columns:1fr;
+            }
+
+            .grupo-full,
+            .acciones{
+
+                grid-column:auto;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- TOPBAR -->
+
+    <header class="topbar">
+
+        <div class="logo">
+            UsadasBello
+        </div>
+
+        <a href="/panel/" class="btn-volver">
+            Volver al panel
+        </a>
+
+    </header>
+
+    <!-- CONTENIDO -->
+
+    <main class="contenido">
+
+        <section class="panel">
+
+            <h1>
+                Agregar moto
+            </h1>
+
+            <p>
+                Registra una nueva moto en el sistema.
+            </p>
+
+            <form method="POST" enctype="multipart/form-data" class="formulario">
+
+                {% csrf_token %}
+
+                <!-- MARCA -->
+
+                <div class="grupo">
+
+                    <label>
+                        Marca
+                    </label>
+
+                    <input 
+                        type="text"
+                        name="marca"
+                        required
+                    >
+
+                </div>
+
+              <!-- LINEA -->
+
+<div class="grupo">
+
+    <label>
+        Línea
+    </label>
+
+    <input 
+        type="text"
+        name="linea"
+        placeholder="Ej: Duke 390"
+        required
+    >
+
+</div>
+
+<!-- MODELO -->
+
+<div class="grupo">
+
+    <label>
+        Modelo (año)
+    </label>
+
+    <input 
+        type="number"
+        name="modelo"
+        placeholder="Ej: 2022"
+        required
+    >
+
+</div>
+
+<!-- PLACA -->
+
+<div class="grupo">
+
+    <label>
+        Placa
+    </label>
+
+    <input 
+        type="text"
+        name="placa"
+        placeholder="Ej: ABC123"
+        required
+    >
+
+</div>
+
+                <!-- PRECIO -->
+
+                <div class="grupo">
+
+                    <label>
+                        Precio
+                    </label>
+
+                    <input 
+                        type="number"
+                        name="precio"
+                        required
+                    >
+
+                </div>
+
+                <!-- CILINDRAJE -->
+
+                <div class="grupo">
+
+                    <label>
+                        Cilindraje
+                    </label>
+
+                    <input 
+                        type="number"
+                        name="cilindraje"
+                        required
+                    >
+
+                </div>
+
+                <!-- KILOMETRAJE -->
+
+                <div class="grupo">
+
+                    <label>
+                        Kilometraje
+                    </label>
+
+                    <input 
+                        type="number"
+                        name="kilometraje"
+                        required
+                    >
+
+                </div>
+
+                <!-- IMAGEN -->
+
+                <div class="grupo">
+
+                    <label>
+                        Imagen
+                    </label>
+
+                    <input 
+                    type="file"
+                    name="imagenes"
+                    multiple
+                    required
+                    >
+                </div>
+
+                <!-- ESTADO -->
+
+                <div class="grupo">
+
+                    <label>
+                        Estado
+                    </label>
+
+                    <select name="estado">
+
+                        <option value="Publicada">
+                            Publicada
+                        </option>
+
+                        <option value="Pendiente">
+                            Pendiente
+                        </option>
+
+                        <option value="Vendida">
+                            Vendida
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <!-- SOAT -->
+
+                <div class="grupo">
+
+                    <label>
+                        SOAT
+                    </label>
+
+                    <input
+                        type="text"
+                        name="soat"
+                        placeholder="Ej: 29/04/2027"
+                    >
+
+                </div>
+
+                <!-- TECNOMECANICA -->
+
+                <div class="grupo">
+
+                    <label>
+                        Tecnomecánica
+                    </label>
+
+                    <input
+                        type="text"
+                        name="tecnomecanica"
+                        placeholder="Ej: 29/04/2027"
+                    >
+
+                </div>
+
+                <!-- TRANSITO -->
+
+                <div class="grupo">
+
+                    <label>
+                        Tránsito
+                    </label>
+
+                    <input
+                        type="text"
+                        name="transito"
+                        placeholder="Ej: Bello"
+                    >
+
+                </div>
+
+                <!-- DESCRIPCION -->
+
+                <div class="grupo grupo-full">
+
+                    <label>
+                        Descripción
+                    </label>
+
+                    <textarea 
+                        name="descripcion"
+                        required
+                    ></textarea>
+
+                </div>
+
+                <!-- BOTON -->
+
+                <div class="acciones">
+
+                    <button type="submit" class="btn-guardar">
+                        Guardar moto
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

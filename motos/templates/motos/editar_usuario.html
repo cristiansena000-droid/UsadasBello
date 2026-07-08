@@ -1,0 +1,137 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+```
+<meta charset="UTF-8">
+
+<title>
+    Editar usuario
+</title>
+
+<link rel="stylesheet"
+href="{% static 'motos/panel.css' %}">
+```
+
+</head>
+
+<body>
+
+<header class="topbar">
+
+```
+<div class="logo">
+    UsadasBello
+</div>
+
+<nav class="menu-top">
+
+    <a href="/panel-motos/">Motos</a>
+
+    <a href="/usuarios/">Usuarios</a>
+
+    <a href="/solicitudes/">Solicitudes</a>
+
+    <a href="/panel/">Dashboard</a>
+
+    <a href="/rendimiento/">Rendimiento</a>
+
+</nav>
+
+<a href="/logout/" class="btn-salir">
+    Salir
+</a>
+```
+
+</header>
+
+<main class="contenido">
+
+```
+<section class="panel-principal">
+
+    <div class="panel-header">
+
+        <h1>
+            Editar usuario
+        </h1>
+
+    </div>
+
+    <form method="POST"
+          enctype="multipart/form-data">
+
+        {% csrf_token %}
+
+        <div style="margin-bottom:20px;">
+
+            <label>
+                Usuario
+            </label>
+
+            <input
+                type="text"
+                name="username"
+                value="{{ usuario_obj.username }}"
+                style="width:100%;padding:12px;">
+        </div>
+
+        <div style="margin-bottom:20px;">
+
+            <label>
+                Correo
+            </label>
+
+            <input
+                type="email"
+                name="email"
+                value="{{ usuario_obj.email }}"
+                style="width:100%;padding:12px;">
+        </div>
+
+        <div style="margin-bottom:20px;">
+
+            <label>
+                Teléfono
+            </label>
+
+            <input
+                type="text"
+                name="telefono"
+                value="{{ perfil.telefono }}"
+                style="width:100%;padding:12px;">
+        </div>
+
+        <div style="margin-bottom:20px;">
+
+            <label>
+                Foto
+            </label>
+
+            <input
+                type="file"
+                name="foto">
+        </div>
+
+        <button
+            type="submit"
+            class="btn-agregar">
+
+            Guardar cambios
+
+        </button>
+
+    </form>
+
+</section>
+```
+
+</main>
+
+</body>
+
+</html>

@@ -1,0 +1,554 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#f5f7fb;
+    font-family:Arial, Helvetica, sans-serif;
+    color:#111827;
+}
+
+/* CONTENEDOR */
+
+.detalle{
+
+    width:100%;
+
+    max-width:1400px;
+
+    margin:auto;
+
+    padding:60px 40px;
+
+    display:grid;
+
+    grid-template-columns:1.1fr 0.9fr;
+
+    gap:50px;
+
+    align-items:start;
+}
+
+/* IMAGEN */
+
+.detalle-imagen{
+
+    background:white;
+
+    border-radius:28px;
+
+    overflow:hidden;
+
+    box-shadow:0 10px 40px rgba(0,0,0,0.08);
+}
+
+.detalle-imagen img{
+
+    width:100%;
+
+    height:650px;
+
+    object-fit:cover;
+
+    display:block;
+}
+
+/* INFO */
+
+.detalle-info{
+
+    background:white;
+
+    border-radius:28px;
+
+    padding:45px;
+
+    box-shadow:0 10px 40px rgba(0,0,0,0.08);
+}
+
+/* MARCA */
+
+.categoria{
+
+    background:#eef2ff;
+
+    color:#4338ca;
+
+    padding:10px 18px;
+
+    border-radius:999px;
+
+    font-size:13px;
+
+    font-weight:bold;
+
+    display:inline-block;
+
+    margin-bottom:20px;
+}
+
+/* TITULO */
+
+.detalle-info h1{
+
+    font-size:48px;
+
+    line-height:1.1;
+
+    margin-bottom:20px;
+}
+
+/* PRECIO */
+
+.detalle-info h2{
+
+    font-size:52px;
+
+    color:#111827;
+
+    margin-bottom:25px;
+}
+
+/* DESCRIPCION */
+
+.descripcion{
+
+    color:#6b7280;
+
+    line-height:1.8;
+
+    font-size:17px;
+
+    margin-bottom:35px;
+}
+
+/* BOTONES */
+
+.detalle-botones{
+
+    display:flex;
+
+    gap:15px;
+
+    margin-bottom:45px;
+}
+
+.btn-whatsapp{
+
+    background:#22c55e;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:16px 28px;
+
+    border-radius:14px;
+
+    font-weight:bold;
+
+    transition:0.3s;
+}
+
+.btn-whatsapp:hover{
+
+    transform:translateY(-3px);
+}
+
+.btn-volver{
+
+    background:#f3f4f6;
+
+    color:#111827;
+
+    text-decoration:none;
+
+    padding:16px 28px;
+
+    border-radius:14px;
+
+    font-weight:bold;
+
+    border:1px solid #d1d5db;
+}
+
+/* SPECS */
+
+.specs{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:18px;
+}
+
+.spec-card{
+
+    background:#f9fafb;
+
+    padding:22px;
+
+    border-radius:18px;
+
+    border:1px solid #e5e7eb;
+}
+
+.spec-card span{
+
+    color:#6b7280;
+
+    font-size:14px;
+}
+
+.spec-card h3{
+
+    margin-top:10px;
+
+    font-size:22px;
+}
+
+/* DESCRIPCION LARGA */
+
+.descripcion-larga{
+
+    width:100%;
+
+    padding:0 40px 70px;
+}
+
+.descripcion-container{
+
+    max-width:1400px;
+
+    margin:auto;
+
+    background:white;
+
+    border-radius:28px;
+
+    padding:50px;
+
+    box-shadow:0 10px 40px rgba(0,0,0,0.08);
+}
+
+.descripcion-container h2{
+
+    font-size:36px;
+
+    margin-bottom:30px;
+}
+
+.descripcion-container p{
+
+    color:#4b5563;
+
+    line-height:2;
+
+    font-size:18px;
+
+    white-space:pre-line;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1000px){
+
+    .detalle{
+
+        grid-template-columns:1fr;
+    }
+
+    .detalle-imagen img{
+
+        height:400px;
+    }
+
+    .detalle-info h1{
+
+        font-size:36px;
+    }
+
+    .detalle-info h2{
+
+        font-size:40px;
+    }
+
+    .specs{
+
+        grid-template-columns:1fr;
+    }
+
+}
+
+/* TITULO */
+
+.titulo-moto{
+
+    font-size:52px;
+
+    font-weight:800;
+
+    color:#111827;
+
+    margin-top:10px;
+
+    line-height:1.1;
+}
+
+/* MODELO */
+
+.modelo-anio{
+
+    margin-top:12px;
+
+    font-size:18px;
+
+    color:#6b7280;
+
+    font-weight:500;
+}
+
+/* PRECIO */
+
+.precio-moto{
+
+    font-size:48px;
+
+    margin-top:25px;
+
+    color:#111827;
+
+    font-weight:800;
+}
+
+.miniaturas{
+
+    display:flex;
+
+    gap:12px;
+
+    margin-top:20px;
+
+    flex-wrap:wrap;
+}
+
+.miniatura{
+
+    width:90px;
+
+    height:90px;
+
+    object-fit:cover;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    border:2px solid transparent;
+
+    transition:0.3s;
+}
+
+.miniatura:hover{
+
+    border-color:#ff5a1f;
+
+    transform:scale(1.05);
+}
+
+
+#imagen-principal{
+
+    width:100%;
+
+    height:430px;
+
+    object-fit:cover;
+
+    border-radius:20px;
+}
+
+
+/* ZOOM */
+
+.modal-zoom{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:100vh;
+
+    background:rgba(0,0,0,0.92);
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:9999;
+}
+
+#imagenZoom{
+
+    width:90%;
+
+    max-width:1200px;
+
+    border-radius:20px;
+}
+
+.cerrar-zoom{
+
+    position:absolute;
+
+    top:30px;
+
+    right:40px;
+
+    color:white;
+
+    font-size:50px;
+
+    cursor:pointer;
+}
+
+.contenedor-imagen{
+
+    position:relative;
+}
+
+.flecha{
+
+    position:absolute;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    width:50px;
+
+    height:50px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:rgba(0,0,0,0.6);
+
+    color:white;
+
+    font-size:30px;
+
+    cursor:pointer;
+
+    z-index:10;
+
+    transition:0.3s;
+}
+
+.flecha:hover{
+
+    background:#ff5a1f;
+}
+
+.izquierda{
+
+    left:15px;
+}
+
+.derecha{
+
+    right:15px;
+}
+
+/* ========================= */
+/* RESPONSIVE EXTRA */
+/* AÑADIR AL FINAL */
+/* ========================= */
+
+@media (max-width: 768px){
+
+    .detalle{
+
+        padding:20px 15px;
+
+        gap:20px;
+    }
+
+    .detalle-info{
+
+        padding:25px;
+    }
+
+    .titulo-moto{
+
+        font-size:34px;
+    }
+
+    .precio-moto{
+
+        font-size:34px;
+    }
+
+    .detalle-botones{
+
+        flex-direction:column;
+    }
+
+    .btn-whatsapp,
+    .btn-volver{
+
+        width:100%;
+
+        text-align:center;
+    }
+
+    #imagen-principal{
+
+        height:260px;
+    }
+
+    .miniaturas{
+
+        justify-content:center;
+    }
+
+    .miniatura{
+
+        width:70px;
+
+        height:70px;
+    }
+
+    .descripcion-larga{
+
+        padding:0 15px 40px;
+    }
+
+    .descripcion-container{
+
+        padding:25px;
+    }
+
+    .descripcion-container h2{
+
+        font-size:26px;
+    }
+
+    .descripcion-container p{
+
+        font-size:16px;
+
+        line-height:1.8;
+    }
+
+}

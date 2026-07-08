@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+<style>
+
+body{
+    font-family:Arial;
+    padding:20px;
+    color:#111827;
+}
+
+h1{
+    text-align:center;
+    font-size:28px;
+    margin-bottom:5px;
+}
+
+.fecha{
+    text-align:center;
+    color:gray;
+    margin-bottom:20px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:10px;
+}
+
+th{
+    background:#111827;
+    color:white;
+    padding:8px;
+}
+
+td{
+    border:1px solid #ddd;
+    padding:8px;
+}
+
+.section{
+    margin-top:25px;
+}
+
+.resumen{
+    width:100%;
+    margin-top:20px;
+}
+
+.resumen td{
+    width:25%;
+    text-align:center;
+    padding:15px;
+}
+
+.numero{
+    font-size:22px;
+    font-weight:bold;
+    color:#0f172a;
+}
+
+.titulo{
+    color:#64748b;
+    font-size:12px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+    <h1>
+        Dashboard UsadasBello
+    </h1>
+
+    <div class="fecha">
+
+        Generado automáticamente
+
+    </div>
+
+    <!-- CARDS -->
+
+<table class="resumen">
+
+    <tr>
+
+        <td>
+            <div class="titulo">MOTOS</div>
+            <div class="numero">{{ total_motos }}</div>
+        </td>
+
+        <td>
+            <div class="titulo">USUARIOS</div>
+            <div class="numero">{{ total_usuarios }}</div>
+        </td>
+
+        <td>
+            <div class="titulo">SOLICITUDES</div>
+            <div class="numero">{{ total_solicitudes }}</div>
+        </td>
+
+        <td>
+            <div class="titulo">VISTAS</div>
+            <div class="numero">{{ total_vistas }}</div>
+        </td>
+
+    </tr>
+
+</table>
+
+    <!-- TOP MOTOS -->
+
+    <div class="section">
+
+        <h2>
+            Top motos
+        </h2>
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Moto
+                    </th>
+
+                    <th>
+                        Marca
+                    </th>
+
+                    <th>
+                        Vistas
+                    </th>
+
+                    <th>
+                        Precio
+                    </th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for moto in motos|slice:":10" %}
+
+                <tr>
+
+                    <td>
+
+                        {{ moto.linea }}
+
+                    </td>
+
+                    <td>
+
+                        {{ moto.marca }}
+
+                    </td>
+
+                    <td>
+
+                        {{ moto.vistas }}
+
+                    </td>
+
+                    <td>
+
+                        ${{ moto.precio }}
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <div class="section">
+
+    <h2>
+        Top motos
+    </h2>
+
+    <img
+        src="data:image/png;base64,{{ grafica_top }}"
+        width="500"
+    >
+
+</div>
+
+    <!-- SOLICITUDES -->
+
+    <div class="section">
+
+        <h2>
+            Últimas solicitudes
+        </h2>
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Marca
+                    </th>
+
+                    <th>
+                        Modelo
+                    </th>
+
+                    <th>
+                        Usuario
+                    </th>
+
+                    <th>
+                        Estado
+                    </th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for solicitud in ultimas_solicitudes %}
+
+                <tr>
+
+                    <td>
+
+                        {{ solicitud.marca }}
+
+                    </td>
+
+                    <td>
+
+                        {{ solicitud.modelo }}
+
+                    </td>
+
+                    <td>
+
+                        {{ solicitud.usuario.username }}
+
+                    </td>
+
+                    <td>
+
+                        {{ solicitud.estado }}
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</body>
+
+</html>

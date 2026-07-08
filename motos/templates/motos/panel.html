@@ -1,0 +1,573 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Dashboard administrador
+    </title>
+
+    <link rel="stylesheet"
+    href="{% static 'motos/panel.css' %}">
+
+</head>
+
+<body>
+
+    <!-- TOPBAR -->
+
+    <header class="topbar">
+
+        <div class="logo">
+            UsadasBello
+        </div>
+
+<nav class="menu-top">
+
+    <a href="/panel-motos/">Motos</a>
+
+    <a href="/usuarios/">Usuarios</a>
+
+    <a href="/solicitudes/">Solicitudes</a>
+
+    <a href="/panel/">Dashboard</a>
+
+    <a href="/rendimiento/">Rendimiento</a>
+
+</nav>
+
+    <div class="topbar-actions">
+
+    <a
+        href="/exportar-dashboard/"
+        class="btn-exportar"
+    >
+
+        Exportar PDF
+
+    </a>
+
+<div class="topbar-actions">
+
+    <a href="/logout/" class="btn-salir">
+        Salir
+    </a>
+
+</div>
+
+</div>
+
+
+
+    </header>
+
+    <!-- CONTENIDO -->
+
+    <main class="contenido">
+
+        <!-- CARDS -->
+
+        <section class="cards">
+
+            <!-- TOTAL MOTOS -->
+
+            <div class="card">
+
+                <span class="titulo-card">
+                    TOTAL MOTOS
+                </span>
+
+                <h2>
+                    {{ total_motos }}
+                </h2>
+
+                <p>
+                    Registradas actualmente
+                </p>
+
+            </div>
+
+            <!-- VISTAS -->
+
+            <div class="card">
+
+                <span class="titulo-card">
+                    VISTAS
+                </span>
+
+                <h2>
+                    {{ total_vistas }}
+                </h2>
+
+                <p>
+                    Visitas totales recibidas
+                </p>
+
+            </div>
+
+            <!-- USUARIOS -->
+
+            <div class="card">
+
+                <span class="titulo-card">
+                    USUARIOS
+                </span>
+
+                <h2>
+                    {{ total_usuarios }}
+                </h2>
+
+                <p>
+                    Registrados actualmente
+                </p>
+
+            </div>
+
+            <!-- MOTO TOP -->
+
+            <div class="card">
+
+                <span class="titulo-card">
+                    MOTO MÁS VISTA
+                </span>
+
+                {% if moto_top %}
+
+                <h2>
+
+                    {{ moto_top.linea }}
+
+                </h2>
+
+                <p>
+
+                    {{ moto_top.vistas }}
+                    vistas
+
+                </p>
+
+                {% else %}
+
+                <p>
+                    No hay datos
+                </p>
+
+                {% endif %}
+
+            </div>
+
+        </section>
+
+        <!-- DASHBOARD -->
+
+        <section class="dashboard">
+
+            <!-- GRAFICA -->
+
+            <div class="dashboard-box grafica-real">
+
+                <div class="dashboard-header">
+
+                    <h2>
+                        Estadísticas de vistas
+                    </h2>
+
+                    <span class="mini-badge">
+                        Top motos
+                    </span>
+
+                </div>
+
+                <canvas id="graficaVistas"></canvas>
+
+            </div>
+
+            <!-- ACTIVIDAD -->
+
+            <div class="dashboard-box">
+
+                <div class="dashboard-header">
+
+                    <h2>
+                        Últimas motos agregadas
+                    </h2>
+
+                    <span class="mini-badge">
+                        Recientes
+                    </span>
+
+                </div>
+
+                {% for moto in motos|slice:":5" %}
+
+                <div class="actividad-item">
+
+                    <img
+                        src="{{ moto.imagen.url }}"
+                    >
+
+                    <div class="actividad-info">
+
+                        <h4>
+
+                            {{ moto.linea|default:moto.modelo }}
+
+                        </h4>
+
+                        <p>
+
+                            {{ moto.marca }}
+
+                        </p>
+
+                    </div>
+
+                    <span class="estado-mini">
+
+                        {{ moto.estado }}
+
+                    </span>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </section>
+
+        <!-- PREMIUM GRID -->
+
+        <section class="premium-grid">
+
+            <!-- ACTIVIDAD RECIENTE -->
+
+            <div class="premium-box">
+
+                <div class="premium-top">
+
+                    <h2>
+                        Actividad reciente
+                    </h2>
+
+                </div>
+
+                {% for solicitud in ultimas_solicitudes %}
+
+                <div class="actividad-premium">
+
+                    <img
+                        src="{{ solicitud.imagen.url }}"
+                    >
+
+                    <div>
+
+                        <h4>
+
+                            {{ solicitud.marca }}
+                            {{ solicitud.modelo }}
+
+                        </h4>
+
+                        <p>
+
+                            {{ solicitud.usuario.username }}
+
+                        </p>
+
+                    </div>
+
+                    <span class="estado-mini">
+
+                        {{ solicitud.estado }}
+
+                    </span>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+            <!-- PIE CHART -->
+
+            <div class="premium-box">
+
+                <div class="premium-top">
+
+                    <h2>
+                        Estado solicitudes
+                    </h2>
+
+                </div>
+
+                <canvas id="graficaEstados"></canvas>
+
+            </div>
+
+            
+            <!-- METRICAS -->
+
+            <div class="premium-box">
+
+                <div class="premium-top">
+
+                    <h2>
+                        Métricas
+                    </h2>
+
+                </div>
+
+                <div class="metrica-item">
+
+                    <span>
+                        Moto más cara
+                    </span>
+
+                    <strong>
+
+                        {{ moto_cara.linea }}
+
+                    </strong>
+
+                </div>
+
+                <div class="metrica-item">
+
+                    <span>
+                        Precio promedio
+                    </span>
+
+                    <strong>
+
+                        ${{ promedio_precio }}
+
+                    </strong>
+
+                </div>
+
+                <div class="metrica-item">
+
+                    <span>
+                        Solicitudes
+                    </span>
+
+                    <strong>
+
+                        {{ total_solicitudes }}
+
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- CHART JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+
+        const labels = [
+
+            {% for moto in motos|slice:":5" %}
+
+                "{{ moto.linea|default:moto.modelo }}",
+            {% endfor %}
+
+        ];
+
+        const dataVistas = [
+
+            {% for moto in motos|slice:":5" %}
+
+                {{ moto.vistas }},
+
+            {% endfor %}
+
+        ];
+
+        // GRAFICA VISTAS
+
+        new Chart(
+
+            document.getElementById(
+                'graficaVistas'
+            ),
+
+            {
+
+                type: 'line',
+
+                data: {
+
+                    labels: labels,
+
+                    datasets: [{
+
+                        label: 'Vistas',
+
+                        data: dataVistas,
+
+                        borderColor: '#ff5a1f',
+
+                        backgroundColor:
+                        'rgba(255,90,31,0.15)',
+
+                        fill: true,
+
+                        tension: 0.4,
+
+                        borderWidth: 4,
+
+                        pointBackgroundColor:
+                        '#ff5a1f',
+
+                        pointRadius: 5
+
+                    }]
+                },
+
+                options: {
+
+                    responsive: true,
+
+                    maintainAspectRatio: false,
+
+                    plugins: {
+
+                        legend: {
+
+                            display: false
+
+                        }
+
+                    },
+
+                    scales: {
+
+                        y: {
+
+                            beginAtZero: true
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        );
+
+        // PIE CHART
+
+        new Chart(
+
+            document.getElementById(
+                'graficaEstados'
+            ),
+
+            {
+
+                type: 'doughnut',
+
+                options: {
+
+    responsive: true,
+
+    maintainAspectRatio: false,
+
+    cutout: '58%',
+
+    plugins: {
+
+        legend: {
+
+            position: 'bottom',
+
+            labels: {
+
+                padding: 20,
+
+                boxWidth: 14,
+
+                font: {
+
+                    size: 12
+
+                }
+
+            }
+
+        }
+
+    }
+
+},
+
+                data: {
+
+                    labels: [
+
+                        'Pendientes',
+
+                        'Aceptadas',
+
+                        'Rechazadas'
+
+                    ],
+
+                    datasets: [{
+
+                        data: [
+
+                            {{ pendientes }},
+
+                            {{ aceptadas }},
+
+                            {{ rechazadas }}
+
+                        ],
+
+                        backgroundColor: [
+
+                            '#f59e0b',
+
+                            '#22c55e',
+
+                            '#ef4444'
+
+                        ]
+
+                    }]
+                },
+
+                options: {
+
+                    responsive: true,
+
+                    maintainAspectRatio: false
+
+                }
+
+            }
+
+        );
+
+    </script>
+
+</body>
+
+</html>

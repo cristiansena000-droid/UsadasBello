@@ -1,0 +1,102 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login</title>
+
+    <link rel="stylesheet"
+    href="{% static 'motos/style.css' %}">
+
+</head>
+
+<body>
+
+<section class="login-page">
+
+    <div class="login-box">
+
+        <!-- LOGIN -->
+
+        <div class="login-panel">
+
+            <h2>
+                Iniciar sesión
+            </h2>
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <input
+                    type="text"
+                    name="username"
+                    placeholder="Usuario"
+                    required
+                >
+
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="Contraseña"
+                    required
+                >
+
+                <button
+                    type="submit"
+                    name="login"
+                >
+                    Entrar
+                </button>
+                <a href="/password-reset/">
+    ¿Olvidaste tu contraseña?
+</a>
+
+            </form>
+
+        </div>
+
+        <!-- REGISTRO -->
+
+        <div class="registro-panel">
+
+            <h2>
+                Crear cuenta
+            </h2>
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                {{ registro_form.username }}
+
+                {{ registro_form.email }}
+
+                {{ registro_form.password1 }}
+
+                {{ registro_form.password2 }}
+
+                <button
+                    type="submit"
+                    name="registro"
+                >
+                    Registrarse
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+</body>
+
+</html>

@@ -1,0 +1,152 @@
+{% extends 'motos/base.html' %}
+
+{% load static %}
+
+{% block title %}
+Mi perfil
+{% endblock %}
+
+{% block css %}
+
+<link rel="stylesheet"
+href="{% static 'motos/perfil.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+<div class="perfil-container">
+
+    <div class="perfil-card">
+
+        <h1>
+            Mi perfil
+        </h1>
+
+        <form
+            method="POST"
+            enctype="multipart/form-data"
+        >
+
+            {% csrf_token %}
+
+            <!-- FOTO -->
+
+            <div class="foto-preview">
+
+    {% if perfil.foto and perfil.foto.name != 'perfiles/default.png' %}
+
+        <img
+            src="{{ perfil.foto.url }}"
+            id="preview"
+        >
+
+    {% else %}
+
+        <div class="avatar-letra">
+
+            {{ user.username|first|upper }}
+
+        </div>
+
+    {% endif %}
+
+</div>
+         
+            <input
+                type="file"
+                name="foto"
+                onchange="previewImagen(event)"
+            >
+
+            <!-- USERNAME -->
+
+            <input
+                type="text"
+                name="username"
+                placeholder="Usuario"
+                value="{{ user.username }}"
+            >
+
+            <!-- EMAIL -->
+
+            <input
+                type="email"
+                name="email"
+                placeholder="Correo"
+                value="{{ user.email }}"
+            >
+
+            <!-- TELEFONO -->
+
+            <input
+                type="text"
+                name="telefono"
+                placeholder="Teléfono"
+                value="{{ perfil.telefono }}"
+            >
+
+            <!-- PASSWORD -->
+
+            <h3 class="titulo-password">
+    Cambiar contraseña
+</h3>
+
+            <input
+    type="password"
+    name="password_actual"
+    placeholder="Contraseña actual"
+>
+
+<input
+    type="password"
+    name="password_nueva"
+    placeholder="Nueva contraseña"
+>   
+
+{% if error_password %}
+
+<p class="error-password">
+    {{ error_password }}
+</p>
+
+{% endif %}
+
+            <button type="submit">
+
+                Guardar cambios
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<script>
+
+function previewImagen(event){
+
+    const reader = new FileReader();
+
+    reader.onload = function(){
+
+        const preview =
+        document.querySelector(".foto-preview");
+
+        preview.innerHTML = `
+            <img src="${reader.result}" id="preview">
+        `;
+
+    }
+
+    reader.readAsDataURL(
+        event.target.files[0]
+    );
+
+}
+
+</script>
+
+{% endblock %}

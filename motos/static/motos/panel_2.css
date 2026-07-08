@@ -1,0 +1,538 @@
+/* ================= PANEL ADMIN ================= */
+
+.panel-admin{
+
+    position:absolute;
+
+    top:70px;
+
+    right:0;
+
+    width:280px;
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:22px;
+
+    box-shadow:0 15px 40px rgba(0,0,0,0.18);
+
+    display:none; 
+
+    z-index:999;
+}
+
+/* BOTON MENU */
+
+.btn-menu{
+
+    background:none;
+
+    border:none;
+
+    color:white;
+
+    font-size:30px;
+
+    cursor:pointer;
+}
+
+/* CERRAR */
+
+.cerrar-panel{
+
+    position:absolute;
+
+    top:10px;
+
+    right:14px;
+
+    border:none;
+
+    background:none;
+
+    font-size:28px;
+
+    cursor:pointer;
+
+    color:#9ca3af;
+}
+
+/* ================= USUARIO ================= */
+
+.usuario-top{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    margin-bottom:20px;
+
+    padding-bottom:18px;
+
+    border-bottom:1px solid #eee;
+}
+
+/* FOTO */
+
+.foto-perfil{
+
+    width:58px;
+
+    height:58px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:3px solid #ff4d1c;
+}
+.foto-perfil-default{
+
+    width:60px;
+    height:60px;
+
+    border-radius:50%;
+
+    background:#ff5722;
+
+    color:white !important;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:28px;
+    font-weight:bold;
+
+    line-height:60px;
+
+}
+
+/* INFO */
+
+.usuario-info h3{
+
+    font-size:18px;
+
+    color:#111827;
+
+    margin-bottom:4px;
+}
+
+.usuario-info p{
+
+    font-size:13px;
+
+    color:#6b7280;
+}
+
+/* ================= LINKS ================= */
+
+.menu-links{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:4px;
+}
+
+.item-menu{
+
+    text-decoration:none;
+
+    color:#111827;
+
+    padding:12px 14px;
+
+    border-radius:12px;
+
+    transition:0.25s;
+
+    font-weight:500;
+
+    font-size:15px;
+}
+
+.item-menu:hover{
+
+    background:#fff1eb;
+
+    color:#ff4d1c;
+}
+
+/* SALIR */
+
+.item-menu.salir{
+
+    color:#ffffff;
+}
+
+.item-menu.salir:hover{
+
+    background:#fee2e2;
+
+    color:#b91c1c;
+}
+
+/* ================= LOGIN / REGISTRO ================= */
+
+.auth-box{
+
+    width:100%;
+}
+
+.auth-section h3{
+
+    margin-bottom:18px;
+
+    color:#111827;
+}
+
+/* INPUTS */
+
+.input-auth{
+
+    width:100%;
+
+    padding:12px;
+
+    border:1px solid #d1d5db;
+
+    border-radius:12px;
+
+    margin-bottom:12px;
+
+    outline:none;
+
+    font-size:14px;
+}
+
+.input-auth:focus{
+
+    border-color:#ff4d1c;
+}
+
+/* BOTON LOGIN */
+
+.btn-login{
+
+    width:100%;
+
+    background:#ff4d1c;
+
+    color:white;
+
+    border:none;
+
+    padding:13px;
+
+    border-radius:12px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:0.25s;
+
+    margin-bottom:14px;
+}
+
+.btn-login:hover{
+
+    background:#e63f12;
+}
+
+/* LINKS */
+
+.switch-link{
+
+    color:#ff4d1c;
+
+    cursor:pointer;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    transition:0.2s;
+}
+
+.switch-link:hover{
+
+    opacity:0.75;
+}
+
+
+
+/* MODAL CONSULTA */
+
+.modal-consulta{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:100%;
+
+    background:rgba(0,0,0,0.5);
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    z-index:9999;
+}
+
+/* BOX */
+
+.consulta-box{
+
+    width:100%;
+
+    max-width:420px;
+
+    background:white;
+
+    border-radius:24px;
+
+    padding:35px;
+
+    position:relative;
+}
+
+/* CERRAR */
+
+.cerrar-consulta{
+
+    position:absolute;
+
+    top:12px;
+
+    right:18px;
+
+    font-size:30px;
+
+    cursor:pointer;
+
+    color:#888;
+}
+
+/* TITULO */
+
+.consulta-box h2{
+
+    margin-bottom:15px;
+
+    color:#111827;
+}
+
+/* TEXTO */
+
+.texto-consulta{
+
+    color:#6b7280;
+
+    line-height:1.6;
+
+    margin-bottom:25px;
+}
+
+/* INPUT */
+
+.input-consulta{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    margin:25px 0;
+
+}
+
+.input-consulta input{
+
+    flex:1;
+
+    padding:14px;
+
+    border:1px solid #d1d5db;
+
+    border-radius:14px;
+
+    outline:none;
+
+    font-size:15px;
+}
+
+.input-consulta input:focus{
+
+    border-color:#ff4d1c;
+}
+
+/* COPIAR */
+
+.input-consulta button{
+
+    width:55px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#ff4d1c;
+
+    color:white;
+
+    font-size:20px;
+
+    cursor:pointer;
+}
+
+/* BOTON RUNT */
+
+.btn-runt{
+
+    width:100%;
+
+    display:block;
+
+    text-align:center;
+
+    background:#111827;
+
+    color:white;
+
+    padding:15px;
+
+    border-radius:14px;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+    transition:0.3s;
+}
+
+.btn-runt:hover{
+
+    background:#000;
+}
+
+/* MENSAJE */
+
+.mensaje-copiado{
+
+    text-align:center;
+
+    margin-top:15px;
+
+    color:#16a34a;
+
+    opacity:0;
+
+    transition:0.3s;
+}   
+
+/* ========================= */
+/* RESPONSIVE EXTRA */
+/* AÑADIR AL FINAL */
+/* ========================= */
+
+@media (max-width:768px){
+
+    /* PANEL USUARIO */
+
+
+
+    .usuario-top{
+
+        align-items:center;
+    }
+
+    .foto-perfil,
+    .foto-perfil-default{
+
+        width:50px;
+        height:50px;
+    }
+
+    .foto-perfil-default{
+
+        font-size:24px;
+
+        line-height:50px;
+    }
+
+    .usuario-info h3{
+
+        font-size:16px;
+    }
+
+    /* MODAL CONSULTA */
+
+    .consulta-box{
+
+        width:95%;
+
+        padding:25px;
+    }
+
+    .input-consulta{
+
+        flex-direction:column;
+    }
+
+    .input-consulta button{
+
+        width:100%;
+
+        height:50px;
+    }
+
+}
+
+
+@media (max-width:768px){
+
+    .panel-admin{
+
+        right:5px;
+
+        left:5px;
+
+        width:auto;
+
+        max-width:none;
+    }
+
+}
+
+#motoSelect{
+
+    width:100%;
+
+    max-width:350px;
+
+    padding:12px;
+
+    border-radius:10px;
+
+    border:1px solid #d1d5db;
+
+    font-size:16px;
+
+}

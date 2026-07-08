@@ -1,0 +1,33 @@
+<h1>
+    Mis favoritos
+</h1>
+
+<div class="motos">
+
+    {% for favorito in favoritos %}
+
+    <div class="card">
+
+        <img src="{{ favorito.moto.imagen.url }}">
+
+        <h3>
+            {{ favorito.moto.marca }}
+            {{ favorito.moto.modelo }}
+        </h3>
+
+        <p>
+            ${{ favorito.moto.precio }}
+        </p>
+
+        <a
+            href="/moto/{{ favorito.moto.id }}/"
+            class="btn rojo"
+        >
+            Ver detalles
+        </a>
+
+    </div>
+
+    {% endfor %}
+
+</div>

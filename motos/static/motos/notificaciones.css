@@ -1,0 +1,54 @@
+/* FONDO COMO PANEL */
+body{
+    background:#f5f6fa;
+}
+
+/* CONTENEDOR */
+.noti-container{
+    padding:40px;
+}
+
+/* TITULO */
+.noti-container h1{
+    font-size:28px;
+    font-weight:600;
+    margin-bottom:20px;
+}
+
+/* FILAS */
+.noti-card{
+    background:white;
+    border-radius:12px;
+    padding:20px;
+    margin-bottom:10px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid #eee;
+    transition:0.3s;
+}
+
+/* HOVER */
+.noti-card:hover{
+    background:#f9f9f9;
+}
+
+/* MENSAJE */
+.noti-card p{
+    margin:0;
+    font-weight:500;
+}
+
+/* FECHA */
+.noti-card span{
+    color:#777;
+    font-size:14px;
+}
+
+/* VACIO */
+.noti-container > p{
+    background:white;
+    padding:40px;
+    border-radius:12px;
+    text-align:center;
+}

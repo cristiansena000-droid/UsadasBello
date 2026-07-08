@@ -1,0 +1,63 @@
+/* FONDO IGUAL AL PANEL */
+body{
+    background:#f5f6fa;
+}
+
+/* CONTENEDOR GENERAL */
+.panel-container{
+    padding:40px;
+}
+
+/* HEADER */
+.panel-header{
+    margin-bottom:25px;
+}
+
+.panel-header h1{
+    font-size:28px;
+    font-weight:600;
+}
+
+.panel-header p{
+    color:#777;
+}
+
+/* TABLA */
+.tabla{
+    background:white;
+    border-radius:12px;
+    padding:20px;
+}
+
+/* HEADER TABLA */
+.tabla-header{
+    display:grid;
+    grid-template-columns: 120px 1fr 1fr 1fr;
+    font-weight:600;
+    color:#555;
+    padding-bottom:10px;
+    border-bottom:1px solid #e5e5e5;
+}
+
+/* FILAS */
+.tabla-row{
+    display:grid;
+    grid-template-columns: 120px 1fr 1fr 1fr;
+    align-items:center;
+    padding:15px 0;
+    border-bottom:1px solid #eee;
+}
+
+/* IMAGEN */
+.tabla-row img{
+    width:90px;
+    border-radius:8px;
+}
+
+/* EMPTY */
+.empty{
+    background:white;
+    padding:40px;
+    border-radius:12px;
+    text-align:center;
+}

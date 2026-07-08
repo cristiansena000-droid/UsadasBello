@@ -1,0 +1,69 @@
+{% extends 'motos/base.html' %}
+{% load static %}
+
+{% block title %}
+Mis solicitudes
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'motos/mis_solicitudes.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="panel-container">
+
+    <div class="panel-header">
+        <h1>Mis solicitudes</h1>
+        <p>Historial de solicitudes enviadas</p>
+    </div>
+
+    {% if solicitudes %}
+
+    <div class="tabla">
+
+        <div class="tabla-header">
+            <span>Imagen</span>
+            <span>Nombre</span>
+            <span>Marca</span>
+            <span>Fecha</span>
+        </div>
+
+        {% for s in solicitudes %}
+
+        <div class="tabla-row">
+
+            <div>
+                <img src="{{ s.imagen.url }}">
+            </div>
+
+            <div>
+                {{ s.modelo }}
+            </div>
+
+            <div>
+                {{ s.marca }}
+            </div>
+
+            <div>
+                {{ s.fecha }}
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    {% else %}
+
+    <div class="empty">
+        <h2>No tienes solicitudes</h2>
+        <p>Aún no has enviado solicitudes</p>
+    </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}
