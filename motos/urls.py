@@ -93,11 +93,9 @@ path(
     name="manual"
 ),
 
-path(
-    "obtener-motos/",
-    views.obtener_motos,
-    name="obtener_motos"
-),
+path("obtener-motos/",views.obtener_motos,name="obtener_motos"),
+
+path('', lambda request: redirect('/index/')),
    ]
 
 
