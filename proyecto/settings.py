@@ -83,11 +83,11 @@ WSGI_APPLICATION = 'proyecto.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": os.getenv("usadasbello"),
-        "USER": os.getenv("root"),
-        "PASSWORD": os.getenv("sena"),
-        "HOST": os.getenv("127.0.0.1"),
-        "PORT": os.getenv("3306"),
+        "NAME": os.getenv("MYSQLDATABASE"),
+        "USER": os.getenv("MYSQLUSER"),
+        "PASSWORD": os.getenv("MYSQLPASSWORD"),
+        "HOST": os.getenv("MYSQLHOST"),
+        "PORT": os.getenv("MYSQLPORT"),
     }
 }
 
